@@ -1,0 +1,63 @@
+{
+  "name": "myfitnesspal",
+  "logo": "assets/img/myfitnesspal_logo.png",
+  "photo": "assets/img/myfitnesspal_photo.png",
+  "des": "Myfitnesspal is your personal trainer in fitness. helping you track your meals and daily activity towards healthier living!",
+  "link": "https://www.myfitnesspal.com",
+  "create_time": "20.03.2015",
+  "end_time": "31.12.2015",
+  "common_consent": [
+    "fa-hdd-o",
+    "fa-building",
+    "fa-diamond",
+    "fa-cc"
+  ],
+  "status":"active",
+  "accessible": [
+    {
+      "subject": "Purchase Data",
+      "nodes": [
+        {
+          "name": "S Group",
+          "des": "Nutritional information of purchased food beverages.",
+          "active": 1
+        },
+        {
+          "name": "FitMeals",
+          "des": "Nutritional information of purchased food beverages.",
+          "active": 1
+        }
+      ]
+    },
+    {
+      "subject": "Activity Data(Optional)",
+      "nodes": [
+        {
+          "name": "S Group",
+          "des": "Nutritional information of purchased food beverages.",
+          "active": 1
+        }
+      ]
+    }
+  ],
+  "inserted": [
+    {
+      "subject": "Profile info",
+      "nodes": [
+        {
+          "name": "Myfirness User Profile",
+          "des": "Your online Myfitnesspal profile"
+        }
+      ]
+    },
+    {
+      "subject": "Other information",
+      "nodes": [
+        {
+          "name": "My daily nutritional inform",
+          "des": "My daily nutritional information"
+        }
+      ]
+    }
+  ]
+}

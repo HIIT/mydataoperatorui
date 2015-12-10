@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<meta charset="utf-8">
+<style>
+
+    .node {
+        font: 100 22px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .link {
+        stroke: #000000;
+        opacity: .3;
+        fill: none;
+
+        -webkit-transition: opacity 0.8s ease-in-out;
+        -moz-transition: opacity 0.8s ease-in-out;
+        -ms-transition: opacity 0.8s ease-in-out;
+        -o-transition: opacity 0.8s ease-in-out;
+        transition: opacity 0.8s ease-in-out;
+    }
+
+    .node:hover,
+    .node--source,
+    .node--target {
+        font-weight: 100;
+    }
+
+    .node--source {
+        fill: #0488FF;
+    }
+
+    .node--target {
+        fill: #FF8700;
+    }
+
+    .link--source,
+    .link--target {
+        opacity: 1;
+        stroke-width: 1px;
+    }
+
+    .link--source {
+        stroke: #ffae0c;
+        opacity: 0.5;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 2s linear forwards;
+        animation: dash 2s linear forwards;
+
+
+    }
+
+    .link--target {
+        stroke: #0488FF;
+        opacity: 0.5;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 2s linear forwards;
+        animation: dash 2s linear forwards;
+    }
+
+    @-webkit-keyframes dash {
+        to {
+            opacity: 1;
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes dash {
+        to {
+            opacity: 1;
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .link-fadeout {
+        opacity: 0;
+    }
+
+
+</style>
+<body ng-controller="MainCtrl">
+<p>from <a href="http://bl.ocks.org/mbostock/1044242">Here</a></p>
+<script src="js/holder-ipsum.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>-->
+<script src="node_modules/d3/d3.min.js"></script>
+<script src="js/angular/angular.min.js"></script>
+
+<script>
+
+    angular.module('test', []).controller('MainCtrl', function ($scope, $http) {
+
+        a = [
+            ['aaa', 'bbb', 'ccc'],
+            ['aaa', 'bbb'],
+            ['aaa', 'bbb', 'ccc', 'ddd'],
+            ['fff', 'ggg'],
+            ['xxx', 'ccc']
+        ]
+        reorganize(a)
+
+        function reorganize(data) {
+            sorted = {}
+            data.forEach(function(i) {
+                var mainCat = i[0]
+                if (sorted[mainCat] === undefined) {
+                    sorted[mainCat] = {}
+                    sorted[mainCat]['subCates'] = [i.slice(1, i.length)]
+                } else {
+                    sorted[mainCat].subCates.push([i.slice(1, i.length)])
+                }
+                sorted[mainCat]['checked'] = false
+            })
+            console.log(sorted)
+        }})
+
+
+
+</script>

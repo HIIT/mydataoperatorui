@@ -1,0 +1,62 @@
+<div class="wrapper wrapper-content" ng-controller="HomeCtrl as controller">
+    <div class="container animated fadeInRight">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-md">
+                                <h1 class="welcomeTitle">Welcome to MyData Link</h1>
+                            </div>
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-md">
+                                <h2 class="newsTitle">News & Updates</h2>
+                                <table class="table table-hover" style="width:60%">
+                                  <tr>
+                                    <td>07.10.2015 - POC-Demo at OIH</td><td> > </td>
+                                  </tr>
+                                  <tr>
+                                    <td>08.10.2015 - Alpha testing starts</td><td> > </td>
+                                  </tr>
+                                </table>
+                                <!--
+                                <ul class="newsList">
+                                    <li>07.10.2015 - POC-Demo at OIH<span class="pull-right">></span></li>
+                                    <li>08.10.2015 - Alpha testing starts<span class="pull-right">></span></li>
+                                </ul>
+                                -->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-xxl">
+                                <h1 class="welcomeMsg">Discover Services and Get Started!</h1>
+                            </div>
+                        </div>
+                        <!--infinite-scroll='loadMore()' infinite-scroll-distance='0'-->
+
+                        <div class="row m-t-sm" >
+							<!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+							<!-- JY: Following div modified: added style="margin-top: 40px; -->
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 item"
+                                 ng-repeat="(serviceID, serviceDetails) in availableServices" style="margin-top: 40px;"
+                                 >
+                                <a ng-href="#/index/servicesdetails/{{serviceID}}">
+									<!-- JY: Following h2 modified: added style="font-size: 20px; -->
+                                    <h2 class="homeServiceTitle" style="font-size: 20px;">{{serviceDetails.name}}</h2>
+                  									<!-- HH: Remove photos and use only logos for all services -->
+                  									<!-- <img ng-src="{{serviceDetails.img_url_logo}}" class="homeServicePhoto animated fadeInLeft"/> -->
+													<!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+													<!-- <img ng-src="{{serviceDetails.img_url_overview}}" class="homeServicePhoto animated fadeInLeft"/> -->
+                  									<img ng-src="{{serviceDetails.img_url_overview}}" class="homeServicePhoto img-thumbnail img-responsive"/>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

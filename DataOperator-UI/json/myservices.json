@@ -1,0 +1,184 @@
+{
+  "subjects": [
+    {
+      "title": "Food & Pharmacy",
+      "icon": "fa-heartbeat",
+      "items": [
+        {
+          "name": "Polar Flow",
+          "receiving": [
+            "Myfitnesspal"
+          ],
+          "shared": []
+        },
+        {
+          "name": "Myfitnesspal",
+          "receiving": [
+            "Amica"
+          ],
+          "shared": [
+            "Polar Flow",
+            "Fitbit"
+          ]
+        },
+        {
+          "name": "S Group",
+          "receiving": [],
+          "shared": []
+        }
+      ]
+
+    },
+
+    {
+      "title": "Fitness & Health",
+      "icon": "fa-user-plus",
+      "items": [
+        {
+          "name": "Polar Flow",
+          "receiving": [
+            "Fitbit",
+            "Mehilainen"
+          ],
+          "shared": [
+            "S Group",
+            "Myfitnesspal",
+            "KESKO"
+          ]
+        },
+        {
+          "name": "Myfitnesspal",
+          "receiving": [],
+          "shared": []
+        }
+      ]
+
+    },
+
+    {
+      "title": "Heeeees & Health",
+      "icon": "fa-user",
+      "items": [
+        {
+          "name": "Polar Flow",
+          "receiving": [
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit"
+
+          ],
+          "shared": [
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group"
+          ]
+        },
+        {
+          "name": "Myfitnesspal",
+          "receiving": [
+            "S Group",
+            "Myfitnesspal"
+          ],
+          "shared": [
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group"
+          ]
+        }
+      ]
+
+    },
+
+    {
+      "title": "Heeeees & Health",
+      "icon": "fa-user",
+      "items": [
+        {
+          "name": "Polar Flow",
+          "receiving": [
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen",
+            "Fitbit",
+            "Mehilainen"
+
+          ],
+          "shared": [
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO",
+            "S Group",
+            "Myfitnesspal",
+            "KESKO"
+          ]
+        },
+        {
+          "name": "Myfitnesspal",
+          "receiving": [],
+          "shared": []
+        }
+      ]
+
+    }
+  ]
+}

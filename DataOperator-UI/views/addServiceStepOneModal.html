@@ -1,0 +1,281 @@
+<script type="text/javascript">
+  // To prevent double-click
+  function disableButton(form) // Submit button clicked
+  {
+    //
+    // check form input values
+    //
+
+    form.loginSubmit.disabled = true;
+    return true;
+  }
+
+  // To activate submit button again with reset -button
+  function activateButton(form) // Reset button clicked
+  {
+    form.loginSubmit.disabled = false;
+  }
+  
+  function disableAcceptContractButton()
+  {
+    $("#acceptContractButton").loginSubmit.disabled = true;
+  }
+  
+  // To activate submit button again with broadcasted event
+  //$on('loginFailedEvent', function () {
+//       $("#loginForm").loginSubmit.disabled = false;
+//  })
+
+</script>
+
+<div class="addServiceModal">
+    
+    <div class="addServiceModalHeader">
+        <div class="row">
+            <div class="col-lg-1">
+                <!--<img src="assets/img/icons/auth.svg"/>-->
+            </div>
+            <div class="col-lg-10">
+                <!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+                <!--<h2>Authorizing {{serviceDetails.name}} to MyData Link</h2>-->
+                <h2>Activate {{serviceDetails.name}} service to MyData Link</h2>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+    
+    <!-- addService_1 -->
+    <div class="addServiceModalContent">
+        <div id="addService_1" class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <h1>1/2</h1>
+                <!-- JY: Modified "Log in to your {{serviceDetails.name}} Account to authorize it for MyData" to "Authorize MyData Link to host your data related service authorizations" -->
+                <!--<h2>Log in to your {{serviceDetails.name}} Account to authorize it for MyData</h2>-->
+                <h2>Authorize MyData Link to host your data related service authorizations</h2>
+                <br><br>
+                <h3>Clicking "Next" forwards you to an external site</h3>
+                <br>
+                <button type="button" class="btn btn-w-m btn-primary button-margin" ng-click="close()">Cancel</button>
+                <button type="button" class="btn btn-w-m btn-primary button-margin" ng-click="show_login()">Next</button>
+                <br>
+                <!--<img width="150px" src="{{serviceDetails.img_url_logo}}"/>-->
+                <!--<a ng-href="{{data.link}}" ng-click="next()"><img ng-src="{{data.img_url_logo}}" /></a>-->
+                
+                <!-- Login window as "external" page -->
+                <div class="gray-bg foreign_login_container" id="foreign_login_step_1" style="display: none">
+                    
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            
+                            <!-- sct_view -->
+                            <div id="sct_view" class="panel panel-success sct_view" style="display: none;">
+                                <div class="panel-heading">{{serviceDetails.name}}</div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div id="sct_failed" class="alert alert-danger alert-dismissable" style="display: none;">
+                                                <button  class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+                                                Service Contract Template creation failed!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
+                                        <!-- SCT Service Descriptions -->
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <h2>Service description</h2>
+                                            <p>{{serviceDetails.description.short}}</p>
+                                            <p>{{serviceDetails.description.longer}}</p>  
+                                        </div>
+                                        <!-- End of SCT Service Descriptions -->
+                                        <div class="col-xs-0 col-sm-2 col-md-2 col-lg-2"></div>
+                                        <!-- SCT Usage licenses -->
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <h2>Service Contract Terms</h2>
+                                            <table class="table">
+                                                <tr>
+                                                    <td>actor_id</td>
+                                                    <td>{{sct.actor_id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>data_type</td>
+                                                    <td>
+                                                      []
+                                                      <!-- {{sct.data_type}} -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>endpoint_uri</td>
+                                                    <td>{{sct.endpoint_uri}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>intended_use</td>
+                                                    <td>{{sct.intendet_use}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>legal_role</td>
+                                                    <td>{{sct.legal_role}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>role</td>
+                                                    <td>{{sct.role}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>status</td>
+                                                    <td>{{sct.status}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>user_id</td>
+                                                    <td>{{sct.user_id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>validity_period</td>
+                                                    <td>{{sct.validity_period}}</td>
+                                                </tr>
+                                            </table>
+                                         </div>
+                                        <!-- End of SCT Usage licenses -->
+                                        <div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <button type="button" ng-click="discard_sct()" class="btn btn-w-m btn-warning button-margin">Discard</button>
+                                            <button id="acceptContractButton" type="submit" ng-click="accept_sct(sct_content)" class="btn btn-w-m btn-success button-margin" onclick="return disableAcceptContractButton();">Accept</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of sct_view -->
+                            
+                            <!-- Service login form -->
+							<!-- HAD TO DISABLE ANIMATION BECAUSE CHROME DISPLAYED PART OF THE MODAL TRANSPARENT DURING MODAL -->
+							<!-- <div class="loginColumns animated fadeInDown"> -->
+                            <div class="loginColumns">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2 class="font-bold">{{serviceDetails.name}}</h2>
+                                        <p>{{serviceDetails.description.short}}</p>
+                                        <img class="img-container" ng-src="{{serviceDetails.img_url_logo}}" />
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="ibox-content">
+                                            <div id="login_failed_403" class="alert alert-danger alert-dismissable" style="display: none;">
+                                                <button  class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+                                                Incorrect login credentials!
+                                            </div>
+                                            <div id="login_failed_500" class="alert alert-danger alert-dismissable" style="display: none;">
+                                                <button  class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+                                                Login failed!
+                                            </div>
+                                            
+                                            <form id="loginForm" class="m-t" role="form" onsubmit="return disableButton(this);" onselect="return activateButton(this);">
+                                                <input type="hidden" name="serviceID" value="{{serviceID}}">
+                                                <div class="form-group">
+                                                    <label>Username</label>
+                                                    <input name="username_field" ng-model="user.username" type="username" class="form-control" placeholder="Username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input name="password_field" ng-model="user.password" type="password" class="form-control" placeholder="Password">
+                                                </div>
+                                                
+                                                <!--<img id="spinner" class="spinner" src="http://cc.oulu.fi/~jylikant/dhr/serviceIMGs/ajax-loader.svg"/>-->
+                                                
+												
+												                        <!--
+                                                <div id="spinner" class="sk-spinner sk-spinner-three-bounce button-margin" style="display:none;">
+                                                    <div class="sk-bounce1"></div>
+                                                    <div class="sk-bounce2"></div>
+                                                    <div class="sk-bounce3"></div>
+                                                </div>
+                                                <br>
+                                                -->
+                                                
+                                                <button type="submit" name="loginSubmit" ng-click="perform_login(user)" class="btn btn-success block full-width m-b">Login</button>
+                                                <!--<button type="button" name="loginReset" class="btn btn-warning block full-width m-b" onclick="activateButton(this.form);">Reset</button>-->
+                                                <button type="button" name="loginAbort" ng-click="close_login()" class="btn btn-warning block full-width m-b" onclick="resetForm(this.form);">Abort</button>
+                            
+                                                <a href="#">
+                                                    <small>Forgot password?</small>
+                                                </a>
+                            
+                                                <p class="text-muted text-center">
+                                                    <small>Do not have an account?</small>
+                                                </p>
+                                                <a class="btn btn-sm btn-white btn-block">Create an account</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small>{{serviceDetails.name}}</small>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                       <small>© 2015</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Service login form -->                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+        </div>
+        <!-- End of addService_1 -->
+        
+        <!-- addService_2 -->
+        <div id="addService_2" class="row" style="display: none !important;">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> 
+                <h1>2/2</h1>
+                <h3>Success! You connected {{serviceDetails.name}} to your MyData Link</h3>
+                <h4>Continue browsing or go see {{serviceDetails.name}} data sharing options</h4>
+                <br><br><br>
+                <a ng-href="#/index/discover">
+                    <button ng-click="close()" type="button" class="btn btn-primary">Back to Service Discovery</button>
+                </a>
+                <a ng-click="close()" ng-href="#/index/myservicesdetails/{{serviceID}}">
+                    <button type="button" class="btn btn-primary">Go to {{serviceDetails.name}}</button>
+                </a>
+                <br>
+                <!--<img src="{{serviceDetails.img_url_logo}}"/>-->
+                
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+        </div>
+        <!-- End of addService_2 -->
+    
+        <!-- addService_3 -->
+        <div id="addService_3" class="row" style="display: none !important;">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <h1>2/2</h1>
+                <h3>Aborted! You canceled {{serviceDetails.name}} to your MyData Link</h3>
+                <h4>Continue browsing or go see {{serviceDetails.name}} data sharing options</h4>
+                <br><br><br>
+                <a ng-href="#/index/discover">
+                    <button ng-click="close()" type="button" class="btn btn-primary">Back to Service Discovery</button>
+                </a>
+                <button type="button" class="btn btn-primary" ng-click="close()">Go to {{serviceDetails.name}}</button>
+                <!--
+                <a ng-click="close()" ng-href="#/index/servicesdetails/{{serviceID}}">
+                    <button type="button" class="btn btn-primary">Go to {{serviceDetails.name}}</button>
+                </a>
+                -->
+                <br>
+                <!--<img src="{{serviceDetails.img_url_logo}}"/>-->
+                                
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+        </div>
+        <!-- End of addService_3 -->
+    </div>
+</div>

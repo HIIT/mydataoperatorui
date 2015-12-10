@@ -1,0 +1,52 @@
+.foreign_login_frame
+{
+    border:solid 1px gray;
+    margin: 10px;
+}
+
+.button-margin
+{
+    margin: 5px;
+}
+
+.foreign_login_container
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sk-spinner-three-bounce div {
+      background-color:#1c84c6; 
+}
+
+
+.sct_view 
+{
+/*    height: 70%;
+    left: 30%;
+    margin-left: -10%;
+    margin-top: -30%;
+    position: fixed;
+    top: 70%;
+    width: 60%;*/
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    z-index: 9999 !important;
+}
+
+p
+{
+    word-break: normal !important;
+}
+
+common_consent_margin
+{
+  margin-right:1em;
+}
+

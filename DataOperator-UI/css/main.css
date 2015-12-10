@@ -1,0 +1,523 @@
+.lineBlock {
+    padding: 19px 0 0 0;
+}
+
+.btn_service {
+    margin: 0 0 10px 0;
+    white-space: normal;
+}
+
+.logoIcon{
+    margin: 0 0 0 5px;
+    height: 15px;
+}
+
+/*Profile */
+
+.profile-element > .loginas{
+    display:block;
+    padding: 20px 5px 10px 0;
+    font-size:11px;
+}
+
+.profile-photo{
+    width:25%;
+    height: 15%;
+    display:inline-block;
+    margin-top:-8px;
+}
+
+.profile-name {
+    width:45%;
+    display:inline-block;
+    padding: 0 0 0 10px;
+    color: #e9eaee;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.profile-name > span{
+
+}
+
+/*My Services*/
+
+.myServicesHeader img {
+    padding-top: 12px;
+    height: 28px;
+}
+
+.myServicesCircleLegend {
+    padding-top: 15px;
+}
+
+.myServicesHeader h2 {
+    color: #17B190;
+    padding-top: 7px;
+    font-size: 16px;
+}
+
+/* My services circle view*/
+
+.circlegraph {
+    margin: -200px 0 0 0;
+    padding: 0 0 0 80px;
+}
+.node {
+    font: 100 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+}
+
+.link {
+    stroke: #000000;
+    opacity: .1;
+    fill: none;
+    stroke-width: 2px;
+    -webkit-transition: opacity 0.8s ease-in-out;
+    -moz-transition: opacity 0.8s ease-in-out;
+    -ms-transition: opacity 0.8s ease-in-out;
+    -o-transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.node:hover,
+.node--source,
+.node--target {
+    font-weight: 100;
+}
+
+.node--source {
+    color: #0488FF;
+    fill: #0488FF;
+}
+
+.node--target {
+    color: #FF8700;
+    fill: #FF8700;
+}
+
+.link--source,
+.link--target {
+    opacity: 1;
+    stroke-width: 2px;
+}
+
+.link--source {
+    stroke: #ffae0c;
+    opacity: 0.5;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash 2s linear forwards;
+    animation: dash 2s linear forwards;
+
+
+}
+
+.link--target {
+    stroke: #0488FF;
+    opacity: 0.5;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash 2s linear forwards;
+    animation: dash 2s linear forwards;
+}
+
+@-webkit-keyframes dash {
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash {
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+.link--fadeout {
+    opacity: 0;
+}
+
+/*home*/
+
+.welcomeTitle{
+    /*font-size: 72px;*/
+    font-size: 3em;
+    padding: 0 0 0 25px;
+}
+
+.newsTitle {
+    font-size: 3em;
+    /*padding: 20px 0 0 0;*/
+}
+
+.newsList {
+    font-weight: 100;
+}
+
+.newsList {
+    padding:10px 0 0 0;
+}
+
+.newsList li{
+    list-style: none;
+    margin-bottom: 4px;
+    font-size: 18px;
+}
+
+.welcomeMsg {
+    text-align: center;
+    /*font-size: 50px;*/
+    font-size: 2em;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*font-weight: 100;*/
+    margin-top:0.2em;
+}
+
+.homeServicePhoto {
+    /*width: 90%;*/
+    width: 99%;
+    /*height: 340px;*/
+}
+
+.homeServiceTitle {
+    text-align: center;
+    color: #888888;
+    padding-bottom: 10px;
+}
+
+/*discovery page*/
+
+.serviceThumbnail {
+    width: 100%;
+    height: 250px;
+}
+
+.profileName {
+    font-size: 72px;
+}
+
+.actAccount {
+    font-size: 72px;
+}
+
+/*Service Details*/
+
+.serviceDetailLeftCol {
+    padding: 35px 90px 0 50px;
+}
+
+.serviceDetailLeftCol img{
+    /*max-height: 230px;*/
+    width: 50%;
+}
+
+.serviceCanAccessDes{
+    font-size: 28px;
+    color: #17B190;
+    line-height: 1.4;
+}
+
+.serviceCanAccess li{
+    list-style: none;
+    padding: 10px 40px 0 0;
+}
+
+.serviceCanAccess li h2 {
+    color:#626367;
+}
+
+.serviceCanAccess li p {
+    color:#626367;
+    padding-right: 80px;
+}
+
+.serviceDetailRightCol{
+    padding-top:30px;
+    padding-right:60px;
+}
+
+.serviceDescription{
+    text-align: justify;
+    line-height: 1.5;
+}
+.commonConsentLogo {
+    width: 60px;
+    margin-right:6px;
+}
+
+.commonConsentTitle {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    letter-spacing: 5px;
+}
+
+/*add service modal*/
+
+.addServiceModalPos {
+    top: 100px;
+}
+
+.addServiceModal {
+    height: 500px;
+    text-align: center;
+}
+
+.addServiceModalHeader {
+    color: #3EB497;
+}
+
+.addServiceModalHeader i {
+    padding: 8px 14px 0 0;
+    color: #3EB497;
+}
+
+.addServiceModal h1 {
+    padding-top: 30px;
+    color: #3EB497;
+    font-size: 62px;
+}
+
+.addServiceModal h2 {
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+.addServiceModal h3 {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.addServiceModal img {
+    padding-top: 30px;
+    width: 280px;
+}
+
+.addServiceModalHeader img {
+    padding: 15px 0 0 14px;
+    color: #3EB497;
+    width: 80px;
+}
+
+/*cpnsent detail modal*/
+
+.consentDetailsModalPos {
+    top: 10px;
+}
+
+.consentDetailsModal {
+    /*height: 700px;*/
+    padding: 30px
+}
+
+.consentDetailsHeader h2{
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+}
+
+.consentDetailsInfo h2 {
+    margin: 0 0 25px 0;
+}
+
+.consentDetailsInfo span{
+    padding: 7px 0 0 5px;
+}
+
+.consentDocLink {
+    display:block;
+    padding: 80px 0 0 20px;
+}
+
+.tabs-container {
+    /*margin-top: -50px;*/
+    margin-top: 0;
+}
+
+.consentDetailsLogo {
+    padding: 10px 0 0 0;
+    height: 40px;
+}
+
+.consentDetailsModal ul {
+    padding-top: 20px;
+
+}
+
+.consentDetailsInfo ul {
+    padding-top: 0;
+    padding-left:0;
+
+}
+.consentDetailsModal li{
+    padding-top: 10px;
+    list-style: none;
+}
+
+.consentDetailsModal ul li ul{
+    padding-top: 0;
+}
+
+.consentDetailsInfo h3, .consentDetailsModal li h3, .consentDetailsModal li h4 {
+    padding-left: 10px;
+    display: inline;
+    font-weight: 100;
+}
+
+.consentDetailsModal li h3 {
+    cursor: pointer;
+}
+
+/*MyServicesDetail*/
+
+.contractDes{
+    font-size: 21px;
+    font-weight: 100;
+}
+.contractList {
+    margin-bottom: 10px;
+}
+
+.lineInServiceDetails {
+    stroke: rgba(66, 66, 66, 0.4);
+    fill:none;
+    stroke-width: 2px;
+}
+
+.circleInServiceDetails {
+    stroke: rgba(66, 66, 66, 0.4);
+    fill: rgba(66, 66, 66, 0.6);
+}
+
+.serviceDetailMinorLogo {
+    padding-left: 18px;
+    max-height: 130px;
+}
+
+.dataServiceWrap {
+    margin-top: -30px;
+}
+.datasinkArea, .datasourceArea {
+    padding: 0 110px 0 80px;
+}
+
+.consentTitleArea {
+    margin: 15px 0 0 0;
+}
+
+.consentTitleArea img{
+    width: 180px;
+    height: 50px;
+    padding: 0 0 10px 0;
+}
+
+.consentTitleArea h2 {
+    text-align: right;
+}
+
+.consentDetailsArea {
+    background-color: #F3F3F3;
+    padding: 25px 40px 50px 40px;
+    border-radius: 6px;
+    margin-bottom: 45px;
+}
+
+.consentDetailsArea p {
+    line-height: 1.65;
+    color:#7F7F7F;
+}
+
+.consentDetailsArea hr {
+    border: 0;
+    height: 1px;
+    margin: 20px -40px 35px -40px;
+    background: #626367;
+    background-image: linear-gradient(to right, #7f8084, #333, #7f8084);
+}
+
+.consentDetailsArea h2 {
+    font-size: 16px;
+}
+
+.consentDetailsArea .btn-info {
+    background-color: #567EFA;
+    border-color: #567EFA;
+}
+
+/*.consentDetailsArea ul {
+    padding: 20px 0 10px 0;
+}
+.consentDetailsArea ul > li {
+    list-style: none;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.consentDetailsArea ul > li::before {
+    content: '-'
+}
+
+.consentDetailsArea span{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.consentDetailsArea span i {
+    font-size: 24px;
+    padding-left: 7px;
+    color: #57CD6C;
+}*/
+/* FIX_FOX_DEMO*/
+.consentDetailsArea ul {
+    padding-top: 20px;
+
+}
+
+.consentDetailsArea ul {
+    padding-top: 0;
+    padding-left:0;
+
+}
+.consentDetailsArea li{
+    padding-top: 10px;
+    list-style: none;
+}
+
+.consentDetailsArea ul li ul{
+    padding-top: 0;
+    padding-left:40px;
+}
+
+.consentDetailsArea h3 {
+    padding-left: 10px;
+    display: inline;
+    font-weight: 100;
+}
+
+.consentDetailsArea li h3 {
+    cursor: pointer;
+}
+
+
+/* added style */
+
+.mi {
+    width:100%;
+    white-space: normal;
+}
+
+.line {
+    stroke: rgba(66, 66, 66, 0.3);
+    fill:none;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+p{
+    word-break: break-all;
+}

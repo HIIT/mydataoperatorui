@@ -1,0 +1,41 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element block m-t-xs">
+                    <a ui-sref="index.home">
+                        <img class='logo-img' src="assets/img/logo.png" />
+                        <span class="logo-text">MyData</span>
+                        <span class="logo-text">LINK</span>
+                    </a>
+                </div>
+                <div class="profile-element">
+                    <span class="loginas">LOGGED IN AS</span>
+                    <a ui-sref="index.profile">
+                        <img class="profile-photo" ng-src="{{userInfo.img_url_avatar}}" />
+                        <span class="profile-name">
+                            <span>{{userInfo.firstName}}</span>
+                            <span>{{userInfo.lastName}}</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    <a ui-sref="index.home">
+                        MD+
+                    </a>
+                </div>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="index.home"><i class="fa fa-home"></i> <span class="nav-label">Home</span> </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="index.myservices"><i class="fa fa-circle-o"></i> <span class="nav-label">My Services</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="index.discover"><i class="fa fa-star"></i> <span class="nav-label">Discover</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

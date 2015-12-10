@@ -1,0 +1,120 @@
+<div class="wrapper wrapper-content" ng-controller="ServiceDetailCtrl as controller">
+    <div class="container animated fadeInRight">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 serviceDetailLeftCol">
+                                <img class="img-container center-block" ng-src="{{serviceDetails.img_url_logo}}" />
+								<!-- HH: Remove photos and use only logos for all services -->
+                                <!-- <img class="img-container m-t-xxl center-block" ng-src="{{serviceDetails.img_url_banner}}" /> -->
+                                <div class="m-t-xxl">
+                                    <h1 class="serviceCanAccessDes text-center">Services compatible with {{serviceDetails.name}}</h1>
+                                </div>
+
+                                <div>
+                                    <ul class="serviceCanAccess m-t-md">
+                                        <li ng-repeat="i in servicesCanAccess">
+                                            <h2>{{i.name}}</h2>
+                                            <p>{{i.description.short}}</p>
+                                            <hr>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 serviceDetailRightCol">
+
+                                
+                                <!--FIX_FOR_DEMO: 
+                                    1. Title of the Service is not shown. Only Logo;
+                                    2. Add the short description of service;
+                                    3. line between short and longer description;
+                                    4. Add Common consents.
+                                -->
+                                <!--FIXED-->
+                                <h1 class="text-center">{{serviceDetails.name}}</h1>
+                                <div class="row m-t-md">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+                                    <!--
+                                    <p class="serviceDescription">
+                                        {{serviceDetails.description.short}}
+                                    </p>
+                                    <hr>
+                                    -->
+                                    <p class="serviceDescription">
+                                        {{serviceDetails.description.longer}}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="row m-t-md">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <span class="pull-right"><a ng-href="{{serviceDetails.link}}">SEE WEB PAGE</a></span>
+                                  </div>
+                                </div>
+                                <hr>
+
+                                <div class="row m-t-md">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <!--<h5 class="commonConsentTitle">COMMON CONSENT</h5>-->
+                                        <h2>Common Consent</h2>
+                                        <!--FIX_FOR_DEMO: the scale of icon-->
+                                        <span ng-repeat="i in serviceDetails.commonConsents" class="fa-stack fa-lg">
+                                            <!--<img class='commonConsentLogo'ng-src="{{i}}"/>-->
+                                            <i class="fa {{i}} fa-stack-2x"></i>
+                                        </span>
+                                        
+                                        <!--
+                                        <span class="fa-stack fa-lg">
+                                          <li class="fa fa-hdd-o fa-stack-2x"></li>
+                                        </span>
+                                        <span class="fa-stack fa-lg">
+                                          <li class="fa fa-building-o fa-stack-2x"></li>
+                                        </span>
+                                        <span class="fa-stack fa-lg">
+                                          <li class="fa fa-diamond-o fa-stack-2x"></li>
+                                        </span>
+                                        <span class="fa-stack fa-lg">
+                                          <li class="fa fa-cc-o fa-stack-2x"></li>
+                                        </span>
+                                        -->
+                                    </div>
+                                </div>
+
+								<!-- Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+								<!-- h2 commented out -->
+								<!--
+                                <div class="row m-t-xxl">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h2 class="serviceAdd">Add to your account</h2>
+                                  </div>
+                                </div>
+								-->
+
+                                <div class="row m-t-sm">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<!-- Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+									<!-- Changed Button text from "Add to MyData" to "Add to my account" -->
+									<!-- added style="margin-top: 40px;" -->
+                                    <button class="btn btn-primary" ng-click="clickAddTo()" style="margin-top: 40px;">
+                                        Add to my account
+                                    </button>
+                                  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

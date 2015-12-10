@@ -1,0 +1,35 @@
+{
+  "name": "dhrpoc",
+  "version": "1.0.0",
+  "description": "**Please feel free to modify this**",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
+    "build": "webpack --config webpack.config.js --bail -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://hunghanchen@bitbucket.org/dhrpoc/dhr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/dhrpoc/dhr#readme",
+  "devDependencies": {
+    "autoprefixer": "^5.2.0",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.20",
+    "css-loader": "^0.16.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.6.1",
+    "postcss-loader": "^0.6.0",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "angularjs": "0.0.1",
+    "d3": "^3.5.6"
+  }
+}

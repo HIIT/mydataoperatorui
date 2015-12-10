@@ -1,0 +1,11 @@
+[
+  {"name":"aaa", "imports":[]},
+  {"name":"bbb", "imports":["ggg"]},
+  {"name":"ccc", "imports":["bbb", "ccc","ddd", "aaa", "eee", "ddd"]},
+  {"name":"ddd", "imports":["bbb", "ccc","ddd", "aaa", "eee", "ddd"]},
+  {"name":"eee", "imports":[]},
+  {"name":"fff", "imports":[]},
+  {"name":"ggg", "imports":[]},
+  {"name":"hhh", "imports":[]},
+  {"name":"jjj", "imports":[]}
+]

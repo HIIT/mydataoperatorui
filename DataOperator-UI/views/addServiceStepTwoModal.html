@@ -1,0 +1,31 @@
+<div class="addServiceModal">
+    <div class="addServiceModalHeader">
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="assets/img/icons/auth.svg"/>
+            </div>
+            <div class="col-lg-10">
+                <h2 >Authorizing {{data.name}} to MyData Link</h2>
+            </div>
+            <div class="col-lg-1">
+                <a ng-href="#/index/myservicesdetails/{{data.id}}">
+                    <span class="pull-right" ng-click="close()"><i class="fa fa-3x fa-times"></i></span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <h1>2/2</h1>
+    <h3>Success! You connected {{data.name}} to your MyData Link</h3>
+    <h4>Continue browsing or go see {{data.name}} data sharing options</h4>
+
+    <a href="#/index/discover">
+        <button ng-click="close()" type="button" class="btn btn-primary">
+            Continue Browsing
+        </button>
+    </a>
+    <a ng-click="close()" ng-href="#/index/myservicesdetails/{{data.id}}">
+        <button type="button" class="btn btn-primary">Go to {{data.name}}</button>
+    </a>
+</div>
+

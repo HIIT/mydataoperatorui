@@ -1,0 +1,176 @@
+<div class="consentDetailsModal">
+
+    <div class="row consentDetailsHeader">
+        <div class="col-lg-6">
+            <h2>How data is shared between {{consent.source.name}} and {{consent.sink.name}} </h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="btn-group pull-right">
+                <button ng-if='nothadConsent()' ng-click="cancel()" type="button" class="btn btn-default btn-outline">
+                    CANCEL
+                </button>
+                <button ng-if='nothadConsent()' ng-click="giveConsent()" type="button" class="btn btn-primary">
+                    GIVE CONSENT
+                </button>
+                <button ng-if='hadConsent()' ng-click="cancel()" type="button" class="btn btn-default btn-outline">
+                    CANCEL
+                </button>
+                <button ng-if='hadConsent()' ng-click="removeConsent()" type="button" class="btn btn-danger">
+                    WITHDRAW CONSENT
+                </button>
+                <button ng-if='hadConsent()' ng-click="saveChanges()"
+                        type="button" class="btn btn-info" >
+                    SAVE CHANGES
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row consentDetailsInfo">
+        <div class="col-lg-7">
+            <ul>
+                <li>
+                    <label>
+                        <input icheck type="radio" ng-model="consentSettings.default" value="EFF">
+                        <h3>Use EFF Recommended settings for data sharing</h3>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input icheck type="radio" ng-model="consentSettings.default" value="customize">
+                        <h3>Let me select my data sharing settings</h3>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="col-lg-5">-->
+            <!--<h2>Document Information</h2>-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-8">-->
+                    <!--<span>Your document number:</span><br/>-->
+                    <!--<span>Your customer ID number:</span><br/>-->
+                    <!--<span>Document data:</span><br/>-->
+                <!--</div>-->
+                <!--<div class="col-lg-4">-->
+                    <!--<span>#201302</span><br/>-->
+                    <!--<span>#2101</span><br/>-->
+                    <!--<span>12/2/2016</span><br/>-->
+                <!--</div>-->
+                <!--<a href="" class="consentDocLink">View details information</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+                <tabset>
+                    <tab heading="">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-5">
+
+                                    <img class='consentDetailsLogo' ng-src="{{consent.source.img_url_logo}}"/>
+                                    <!--<h2 ng-if="relatedService.role === 'Sink'">What Information sharing to {{relatedService.name}}</h2>-->
+
+                                    <h2>What data can be shared from {{consent.source.name}}</h2>
+
+                                    <!--<h2 ng-if="relatedService.role === 'Both'">What Information shared/sharing from {{relatedService.name}}</h2>-->
+                                    <ul>
+                                        <li ng-repeat="(key, value) in categories">
+                                            <!--TODO_FOR_DEMO: You cannot expand top-level-category without selecting it,
+                                                Also you cannot deselect top-level-category without collapsing it
+                                            -->
+                                            <!--!!!FIXED!!!-->
+                                            <input icheck type="checkbox" ng-model="value.checked">
+                                            <label>
+                                                <h3 ng-click="value.isOpen = !value.isOpen">{{key}}
+                                                    <span ng-hide="value.isOpen || value.subCates.length === 0" class="fa fa-plus"></span>
+                                                    <span ng-if="value.subCates.length > 0" ng-show="value.isOpen" class="fa fa-minus"></span>
+                                                </h3>
+                                            </label >
+                                            <ul ng-show="value.isOpen">
+                                                <li ng-repeat="i in value.subCates">
+                                                            <span ng-repeat="j in i">
+                                                                <span ng-repeat="k in j">
+                                                                    {{k}}
+                                                                </span>
+                                                            </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-7">
+                                    <img class='consentDetailsLogo' ng-src="{{consent.sink.img_url_logo}}"/>
+
+                                    <h2>How {{consent.sink.name}} can use this data</h2>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <ul>
+                                                <li ng-repeat="(key, value) in licenses">
+                                                    <!--TODO_FOR_DEMO: You cannot expand top-level without selecting it-->
+                                                    <!--!!!FIXED!!!-->
+                                                    <input icheck type="checkbox" ng-model="value.checked">
+                                                    <label>
+                                                        <h3 ng-click="value.isOpen = !value.isOpen">{{key}}
+                                                            <span ng-hide="value.isOpen || value.subCates.length === 0" class="fa fa-plus"></span>
+                                                            <span ng-if="value.subCates.length > 0" ng-show="value.isOpen" class="fa fa-minus"></span>
+                                                        </h3>
+                                                    </label >
+                                                    <ul ng-show="value.isOpen">
+                                                        <li ng-repeat="i in value.subCates">
+                                                            <span ng-repeat="j in i">
+                                                                <span ng-repeat="k in j">
+                                                                    {{k}}
+                                                                </span>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--<div class="col-lg-g">-->
+                                            <!--<ul>-->
+                                                <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Sales & Marketing</h3></label></li>-->
+                                                <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Advertising</h3></label></li>-->
+                                                <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Marketing Partners</h3></label></li>-->
+                                                <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Resale</h3></label></li>-->
+                                            <!--</ul>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!--<tab heading="PERSONAL INFORMATION">-->
+                        <!--<div class="panel-body">-->
+                            <!--<strong>Donec quam felis</strong>-->
+
+                            <!--<p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among-->
+                                <!--the stalks, and grow familiar with the countless indescribable forms of the insects-->
+                                <!--and flies, then I feel the presence of the Almighty, who formed us in his own image, and-->
+                                <!--the breath </p>-->
+
+                            <!--<p>I am alone, and feel the charm of existence in this spot, which was created for the bliss-->
+                                <!--of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite-->
+                                <!--sense of mere tranquil existence, that I neglect my talents. I should be incapable of-->
+                                <!--drawing a single stroke at the present moment; and yet.</p>-->
+                        <!--</div>-->
+                    <!--</tab>-->
+                </tabset>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<a href="#/index/discover">-->
+        <!--<button ng-click="close()" type="button" class="btn btn-primary">-->
+            <!--Continue Browsing-->
+        <!--</button>-->
+    <!--</a>-->
+    <!--<a ng-click="close()" ng-href="#/index/myservicesdetails/{{data.name}}">-->
+        <!--<button type="button" class="btn btn-primary">Go to {{data.name}}</button>-->
+    <!--</a>-->
+</div>
+

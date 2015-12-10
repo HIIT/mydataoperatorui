@@ -1,0 +1,38 @@
+[{
+  "consent_id": 1001,
+  "user_id": 2001,
+  "datasink": 3001,
+  "datasource": 4001,
+  "create_time": "31/05/2015",
+  "end_time": "31/12/2015",
+  "status":"active",
+  "scopes": [
+    {
+      "label": "Heart rate",
+      "expired": "31/12/2015"
+    },
+    {
+      "label": "Sleep Efficiency",
+      "expired": "31/12/2015"
+    }
+  ]
+},
+{
+  "consent_id": 1002,
+  "user_id": 2001,
+  "datasink": 3002,
+  "datasource": 4001,
+  "create_time": "31/05/2015",
+  "end_time": "31/12/2015",
+  "status":"pause",
+  "scopes": [
+    {
+      "label": "Heart rate",
+      "expired": "31/12/2015"
+    },
+    {
+      "label": "Sleep Efficiency",
+      "expired": "31/12/2015"
+    }
+  ]
+}]

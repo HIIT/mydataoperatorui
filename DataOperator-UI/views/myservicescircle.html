@@ -1,0 +1,49 @@
+<div class="wrapper wrapper-content" ng-controller="MyServiceCircleCtrl as controller">
+    <div class="container animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content myServicesHeader">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h2 class="pull-right">Data Sender</h2>
+                            </div>
+                            <div class="col-lg-2">
+                                <i class="fa fa-circle fa-1x node--source myServicesCircleLegend"></i>
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-5">
+                                <div class="btn-group pull-right">
+                                    <a ui-sref="index.myservices">
+                                        <button class="btn btn-success" >
+                                            <i class="fa fa-bars"></i><span> LIST</span>
+                                        </button>
+                                    </a>
+                                    <a ui-sref="index.myservicescircle">
+                                        <button class="btn btn-success" ng-disabled="true">
+                                            <i class="fa fa-circle-o-notch"></i><span> RADIAL</span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h2 class="pull-right">Data Shared</h2>
+                            </div>
+                            <div class="col-lg-2">
+                                <i class="fa fa-circle fa-1x node--target myServicesCircleLegend"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="ibox-content no-borders">
+                        <div class="circlegraph">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

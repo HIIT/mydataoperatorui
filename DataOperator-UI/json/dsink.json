@@ -1,0 +1,92 @@
+[
+  {
+    "id": 7001,
+    "name": "fitbit",
+    "description": "It is the great thing over the world!",
+    "logo": "fitbit.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  },
+  {
+    "id": 7002,
+    "name": "jawbone",
+    "description": "It is the great thing over the world!",
+    "logo": "jawbone.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  },
+  {
+    "id": 7003,
+    "name": "moves",
+    "description": "It is the great thing over the world!",
+    "logo": "moves.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  },
+  {
+    "id": 7004,
+    "name": "polar",
+    "description": "It is the great thing over the world!",
+    "logo": "polar.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  },
+  {
+    "id": 7005,
+    "name": "runkeeper",
+    "description": "It is the great thing over the world!",
+    "logo": "runkeeper.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  },
+  {
+    "id": 7006,
+    "name": "withings",
+    "description": "It is the great thing over the world!",
+    "logo": "withings.png",
+    "uri": "http://127.0.0.1:5000/",
+    "required": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  }
+]

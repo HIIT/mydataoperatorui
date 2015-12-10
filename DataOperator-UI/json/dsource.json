@@ -1,0 +1,17 @@
+[
+  {
+    "id": 2001,
+    "name": "blogger",
+    "description": "It is the great thing over the world!",
+    "logo": "blogger.png",
+    "uri": "http://127.0.0.1:5000/",
+    "scopes": [
+      {
+        "label": "Heart rate"
+      },
+      {
+        "label": "Sleep Efficiency"
+      }
+    ]
+  }
+]

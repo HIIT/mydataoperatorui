@@ -1,0 +1,152 @@
+
+<!--<div class="row wrapper border-bottom white-bg page-heading" ng-controller="MyServiceCtrl as controller">-->
+<!--<div class="col-lg-10">-->
+<!--<h2 class="m-b-none">{{controller.title}}</h2>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="wrapper wrapper-content" ng-controller="MyServiceCtrl as controller">
+    <div class="container animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content myServicesHeader">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h2 class="pull-right">Data Sender</h2>
+                            </div>
+                            <div class="col-lg-2">
+                                <img src="assets/img/icons/sender.svg" />
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-2">
+                                <img class="pull-right" src="assets/img/icons/receiver.svg" />
+                            </div>
+                            <div class="col-lg-2">
+                                <h2 class="pull-left">Data Shared</h2>
+                            </div>
+                            <div class="btn-group">
+                                <a ui-sref="index.myservices">
+                                    <button class="btn btn-success" ng-disabled="true">
+                                        <i class="fa fa-bars"></i><span> LIST</span>
+                                    </button>
+                                </a>
+                                <a ui-sref="index.myservicescircle">
+                                    <button class="btn btn-success">
+                                        <i class="fa fa-circle-o"></i><span> RADIAL</span>
+                                    </button>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ibox-content no-borders"
+                         ng-repeat="(serviceID, serviceDetails) in data"
+                         ng-if="returnObjLength(serviceDetails.connections.DataShared) >= 0 || returnObjLength(serviceDetails.connections.ReceivingData) >= 0 ">
+
+                        <div class="row">
+
+                            <!--senders-->
+                            <div class="col-lg-2">
+                                <div class="row"
+                                ng-if="returnObjLength(serviceDetails.connections.DataShared) > 0">
+                                    <div class="col-lg-12" ng-repeat="(sourceName,sourceDetails) in serviceDetails.connections.DataShared">
+                                        <a ng-href="#/index/myservicesdetails/{{sourceDetails.serviceID}}">
+                                            <button class="btn btn-info btn-sm btn-outline pull-right btn_service">
+                                                <span>{{sourceName}}</span><img ng-src="{{sourceDetails.img_url_logo}}" class="logoIcon"/>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--senders' lines-->
+                            <div class="col-lg-2 lineBlock" >
+                                <svg width="100%"
+                                     ng-attr-height="{{returnLongest(serviceDetails.connections.DataShared, serviceDetails.connections.ReceivingData) * 35}}"
+                                     ng-attr-viewBox="0 0 100 {{returnLongest(serviceDetails.connections.DataShared, serviceDetails.connections.ReceivingData) * 100}}"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     ng-if="returnObjLength(serviceDetails.connections.DataShared) > 0">
+
+                                    <g ng-repeat="k in returnObjKeys(serviceDetails.connections.DataShared) track by $index">
+                                        <path
+                                                ng-attr-d="M 0 {{$index*39}}
+                                                           C 94 {{$index*39}},
+                                                             94 {{returnObjLength(serviceDetails.connections.ReceivingData) === 0 && 1 || (returnObjLength(serviceDetails.connections.ReceivingData)-1)*22}},
+                                                             188 {{returnObjLength(serviceDetails.connections.ReceivingData) === 0 && 1 || (returnObjLength(serviceDetails.connections.ReceivingData)-1)*22}}"
+                                                stroke-linejoin="round"
+                                                stroke-linecap="round"
+                                                class="line"
+                                                >
+                                            <!-- ng-attr-stroke-width="{{$index === 0 && '1px' || '1px' }}"-->
+                                            <!--{{j.receiving.length>=1 && 100 || 20}}-->
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+
+
+                            <!-- middle items -->
+                            <div class="col-lg-2"
+                                 ng-style="returnObjLength(serviceDetails.connections.ReceivingData) === 0 && -13 || {'margin-top': (returnObjLength(serviceDetails.connections.ReceivingData)-1) * 22 - 10}"
+                                    >
+                                <a ng-href="#/index/myservicesdetails/{{serviceID}}">
+                                    <button class="btn btn-primary mi">
+                                        <span>{{serviceDetails.name}}</span>
+                                        <br/>
+                                        <img ng-src="{{serviceDetails.img_url_logo}}" class="logoIcon"/>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <!--sharing line-->
+                            <div class="col-lg-2 lineBlock" >
+                                <!--<span>{{returnObjLength(serviceDetails.connections.ReceivingData)}}</span>-->
+                                <svg width="100%" ng-attr-height="{{returnObjLength(serviceDetails.connections.ReceivingData) * 35}}"
+                                     ng-attr-viewBox="0 0 100 {{returnObjLength(serviceDetails.connections.ReceivingData) * 100}}"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     ng-if="returnObjLength(serviceDetails.connections.ReceivingData) > 0">
+
+                                    <g ng-repeat="k in returnObjKeys(serviceDetails.connections.ReceivingData) track by $index" transform="translate(188,0) scale(-1, 1)">
+                                        <path
+                                                ng-attr-d="M 0 {{$index*39}}
+                                                           C 94 {{$index*39}},
+                                                             94 {{(returnObjLength(serviceDetails.connections.ReceivingData)-1) * 22}},
+                                                             188 {{(returnObjLength(serviceDetails.connections.ReceivingData)-1) * 22}}"
+                                                stroke-linejoin="round"
+                                                stroke-linecap="round"
+                                                class="line"
+                                                >
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+
+
+
+                            <!-- shared items -->
+                            <div class="col-lg-2">
+                                <div class="row"
+                                ng-if="returnObjLength(serviceDetails.connections.ReceivingData) > 0">
+                                    <div class="col-lg-12" ng-repeat="(sinkName,sinkDetails) in serviceDetails.connections.ReceivingData">
+                                        <a ng-href="#/index/myservicesdetails/{{sinkDetails.serviceID}}">
+                                            <button class="btn btn-info btn-sm btn-outline btn_service">
+                                                <span>{{sinkName}}</span><img ng-src="{{sinkDetails.img_url_logo}}" class="logoIcon"/>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

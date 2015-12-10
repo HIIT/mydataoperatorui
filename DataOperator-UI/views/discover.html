@@ -1,0 +1,42 @@
+<div class="wrapper wrapper-content" ng-controller="DiscoveryCtrl as controller">
+    <div class="container animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <!--FIX_FOR_DEMO: New and Popular Services should be at top of panel-->
+                        <!--TODO-->
+                        <div ng-repeat="(kind, services) in sortedListofService">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h1>{{kind}}</h1>
+                                </div>
+                                <!--<div class="col-lg-4">-->
+                                    <!--<h2 class="pull-right">See all {{kind}}</h2>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="row">
+                                <!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+                                <!--<div class="col-lg-3" ng-repeat="j in services">-->
+								<!-- JY: Following div modified: added style="margin-bottom: 40px; -->
+                                <div class="col-lg-2 center-block text-center" ng-repeat="j in services" style="margin-bottom: 40px;">
+                                    <a ng-href="#/index/servicesdetails/{{j.serviceID}}">
+										<!-- HH: Remove photos and use only logos for all services -->
+										<!-- <img ng-src="{{j.img_url_logo}}" class="serviceThumbnail"/> -->
+										<!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
+                                        <!--<img ng-src="{{j.img_url_overview}}" class="serviceThumbnail"/>-->
+                                        <img ng-src="{{j.img_url_overview}}" class="img-thumbnail img-responsive" style="width: 100%;"/>										
+										<!-- JY: Following h2 modified: added style="font-size: 20px;" -->
+                                        <h2 style="font-size: 20px;">{{j.name}}</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
