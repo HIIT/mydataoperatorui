@@ -20,6 +20,6 @@ Open [```js/controllers.js```](https://github.com/dhrproject/mydataoperatorui/bl
 
 ## Copying and License
 
-This software product uses INSPINIA-template (http://webapplayers.com/inspinia_admin-v2.3/layouts.html | http://webapplayers.com/)
-All other code is licensed under MIT-license
+This software product uses INSPINIA-template (http://webapplayers.com/inspinia_admin-v2.3/layouts.html | http://webapplayers.com/)  
+  All other code is licensed under MIT-license
 
