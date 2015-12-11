@@ -10,8 +10,8 @@ This is a part of proof-of-concept implementation of [MyData Architecture](https
 ## Getting started
 
 ### Prerequisites
-Please check [```Getting started```](https://github.com/dhrproject/mydataoperator#Getting started) before you start it.
-This DataOperator must running before you start setup the ui part.
+The Data Operator must be running in order to use this UI.
+Please check Data Operator's [```Getting started```](https://github.com/dhrproject/mydataoperator#Getting started) for Data Operator installation instructions.
 
 ### Installation
 Open [```js/controllers.js```](https://github.com/dhrproject/mydataoperatorui/blob/master/DataOperator-UI/js/controllers.js) , replace all occurences of 178.62.244.150:8080 with ip-address:port combination of the server where dataoperator is deployed. e.g. ***http://178.62.244.150:8080/*** with ***http://127.0.0.1:10000/***
