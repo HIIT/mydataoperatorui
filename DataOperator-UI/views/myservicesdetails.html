@@ -1,162 +1,86 @@
 <div class="wrapper wrapper-content" ng-controller="MyServiceDetailCtrl as controller">
-    <div class="container animated fadeInRight">
+    <div class="animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="ibox">
-                    <div class="ibox-content">
+                    <div class="ibox-content no-borders">
+                      <!-- Service Info -->
+                      <div class="row">
+                        <!-- ServiceBrand -->
+                        <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 serviceDetailLeftCol">-->
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 serviceDetailLogoContainer">
+                          <img class="img-container img-rounded center-block serviceDetailLogo" ng-src="{{data.img_url_logo}}" />
+                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
 
+                        <!-- ServiceDescription -->
+                        <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 serviceDetailRightCol">-->
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                          <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                              <h1 class="text-justify serviceDetailName">{{data.name}}</h1>
+                            </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                              <img class="img-container serviceRoleLogo" ng-src="http://cc.oulu.fi/~jylikant/dhr/myDataIcons/icon-{{data.role}}.png" />
+                            </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                          </div><!-- /row -->
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromTop-2">
+                              <p class="serviceDescription">{{data.description.longer}}</p>
+                            </div><!-- col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
+                          </div><!-- /row -->
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromTop-2">
+                              <span class="pull-right"><a ng-href="{{serviceDetails.link}}">SEE WEB PAGE</a></span>
+                            </div><!-- col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
+                          </div><!-- /row -->
+                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                      </div><!--/row -->
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromTop-2"><hr></div>
+                      </div><!--/row -->
+                        <!-- *************************************** -->
+                        <!--<div class="row m-t-xxxl">-->
+                        <!-- Service Connection header -->
                         <div class="row">
-                            <div class="col-lg-6 serviceDetailLeftCol">
-                            <!--TODO_FOR_DEMO: MAYBE WE SHOULD ADD THE TITLE OF SERVICE HERE.-->
-                                <img class="img-container img-responsive center-block" ng-src="{{data.img_url_logo}}" />
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 marginFromTop-1">
+                              <img class="img-container dataFlowLogo pull-right" ng-src="http://cc.oulu.fi/~jylikant/dhr/uiIcons/dataFlowFromLeft.png" />
                             </div>
-
-                            <div class="col-lg-6 serviceDetailRightCol">
-
-                                <div class="row m-t-sm">
-                                    <!--<div class="col-lg-6">-->
-                                        <!--<h5 class="contractDes">Your current connection(s) to {{data.name}}</h5>-->
-                                    <!--</div>-->
-
-                                    <!--<div class="col-lg-6">-->
-                                        <!--<div ng-repeat="(contractID, contractDetails) in data.contracts">-->
-                                            <!--<div class="btn-group btn-group-xs contractList" role="group">-->
-                                                <!--<button type="button" class="btn btn-primary">-->
-                                                    <!--ConsentID {{contractID}}-->
-                                                <!--</button>-->
-                                                <!--<button type="button" class="btn btn-primary btn-outline">-->
-                                                    <!--{{contractDetails.contractStatus}} for {{contractDetails.duration.getUTCDay()}} Days-->
-                                                <!--</button>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-										
-                                    <!--</div>-->
-                                </div>
-                                <!--FIX_FOR_DEMO: 
-                                    1. Title of the Service is not shown. Only Logo;
-                                    2. Add the short description of service;
-                                    3. line between short and longer description;
-                                    4. Add Common consents.
-                                -->
-                                <!--FIXED-->
-                                <h1 class="text-center">{{data.name}}</h1>
-
-                                <div class="row m-t-lg">
-                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
-                                    <!--
-									<p class="serviceDescription">
-                                        {{data.description.short}}
-                                    </p>
-                                    <hr>
-									-->
-                                    <p class="serviceDescription">
-                                        {{data.description.longer}}
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="row m-t-md">
-                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <span class="pull-right"><a ng-href="{{data.link}}">SEE WEB PAGE</a></span>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row m-t-md">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <!--<h5 class="commonConsentTitle">COMMON CONSENT</h5>-->
-                                        <h2>Common Consent</h2>
-                                        <!--FIX_FOR_DEMO: the scale of icon-->
-                                        <span ng-repeat="i in data.commonConsents" class="fa-stack fa-lg">
-                                            <!-- <img class='commonConsentLogo'ng-src="{{i}}"/> -->
-                                            <i class="fa {{i}} fa-stack-2x"></i>
-                                        </span>
-                                    </div>
-                                </div>
-
+                            <!-- Service name -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <!--<img class="img-container serviceDetailMinorLogo" ng-src="{{data.img_url_logo}}" /><br>-->
+                                <h1 class="text-center" style="font-size: 2.5em;">Services connected with {{data.name}}</h1>
                             </div>
-
-                        </div>
-
-                        <div class="row m-t-xxxl">
-                            <div class="col-lg-1 col-lg-offset-3 m-t-lg">
-                                <svg width="100%"
-                                     height="100%"
-                                     viewBox="0 0 100 100"
-                                     xmlns="http://www.w3.org/2000/svg"
-                                     ng-show="potentialDataSourceWithContract.length > 0 || datasourceWithConsent.length > 0 "
-                                        >
-                                    <g transform='rotate(-90) translate(-100,0)' >
-
-                                        <path
-                                                d="M 5 5 C 95 5, 95 95, 95 95"
-                                                stroke-linejoin="round"
-                                                stroke-linecap="round"
-                                                class="lineInServiceDetails"
-                                                >
-                                        </path>
-                                        <circle cx="95" cy="95" r="4"
-                                                class="circleInServiceDetails" />
-                                    </g>
-                                </svg>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 marginFromTop-1">
+                              <img class="img-container dataFlowLogo pull-left" ng-src="http://cc.oulu.fi/~jylikant/dhr/uiIcons/dataFlowToRight.png" />
                             </div>
+                        </div><!-- /row -->
 
-                            <div class="col-lg-3">
-								<!-- HH: There is some problem with using data.img_url_banner as image. It messes up positioning of DataSource-Area with Sink -->
-								<!-- <img class="img-container serviceDetailMinorLogo" ng-src="{{data.img_url_banner}}" /> -->
-                                <img class="img-container serviceDetailMinorLogo" ng-src="{{data.img_url_logo}}" />
-								<br>
-                            </div>
-							
-
-                            <div class="col-lg-1 m-t-lg">
-                                <svg width="100%"
-                                     height="100%"
-                                     viewBox="0 0 100 100"
-                                     xmlns="http://www.w3.org/2000/svg"
-                                     ng-show="potentialDataSinkWithContract.length > 0 || datasinkWithConsent.length > 0 "
-                                        >
-                                    <g>
-
-                                        <path
-                                                d="M 5 5 C 95 5, 95 95, 95 95"
-                                                stroke-linejoin="round"
-                                                stroke-linecap="round"
-                                                class="lineInServiceDetails"
-                                                >
-                                        </path>
-                                        <circle cx="95" cy="95" r="4"
-                                                class="circleInServiceDetails" />
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="row m-t-lg dataServiceWrap">
-
-                            <div class="col-lg-6 datasourceArea">
-
-                                <!--TODO_FOR_DEMO: UI SHOULD ONLY LIST potentialDataSourceWithContract IF THEY DON'T HAVE A CONSENT-->
-                                <!--!!!FIXED!!!-->
-                                <div class="row" ng-repeat="i in potentialDataSourceWithContract track by $index">
-                                    <div class="row consentTitleArea">
-                                        <div class="col-lg-6">
-                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:50%;"/>
-                                        </div>
-                                        <div class="col-lg-6 col-lg-offset">
-                                            <h2 class="pull-right">{{i.name}}</h2>
-                                        </div>
-                                    </div>
+                        <!-- SERVICE CONNECTIONS AND POTENTIAL CONNECTIONS -->
+                        <!--<div class="row m-t-lg dataServiceWrap">-->
+                        <div class="row marginFromTop-2">
+                            <!-- DataSource Section -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <!-- potentialDataSourceWithContract -->
+                                <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in potentialDataSourceWithContract track by $index">
+                                    <!-- Consent Title -->
+                                    <!--<div class="row consentTitleArea">-->
                                     <div class="row">
-                                        <div class="consentDetailsArea">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:40%;"/>
+                                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <h2 class="pull-left serviceNameOnConsentTitleArea">{{i.name}}</h2>
+                                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                                    </div><!-- /row -->
+
+                                    <!-- Detail area -->
+                                    <div class="row">
+                                        <!--<div class="consentDetailsArea">-->
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 consentDetailsArea">
                                             <p>{{i.description.short}}</p>
                                             <h2 class="pull-left"><b>THIS DATA COULD<br>BE SHARED FROM<br>{{i.name}}</b></h2>
-                                            <button type="button"
-                                                    class="btn btn-primary pull-right"
-                                                    ng-click="showConsentModal(i)">
-                                                Give CONSENT
-                                            </button>
+                                            <button type="button" class="btn btn-primary pull-right" ng-click="showConsentModal(i)">Give Consent</button>
                                             <div class="clearfix"></div>
-                                            <!--FIX_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
                                             <ul>
                                                 <li ng-repeat="(key, value) in i.categories track by $index">
                                                     <label>
@@ -172,39 +96,29 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                            <!--END_FIX-->
-                                            <!--TODO_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
-                                           <!--  <ul>
-                                                <li ng-repeat="j in i.categories track by $index">
-                                                    <span>{{j}}</span>
-                                                </li>
-                                            </ul> -->
-                                        </div>
-                                    </div>
-                                </div>
+                                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                                    </div><!-- /row -->
+                                </div><!-- /row -->
+                                <!-- /potentialDataSourceWithContract -->
 
-                                <div class="row" ng-repeat="i in datasourceWithConsent track by $index">
-                                    <div class="row consentTitleArea">
-                                        <div class="col-lg-6">
-                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:50%;"/>
-                                        </div>
-                                        <div class="col-lg-6 col-lg-offset">
-                                            <h2 class="pull-right">{{i.name}}</h2>
-                                        </div>
-                                    </div>
+                                <!-- datasourceWithConsent -->
+                                <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in datasourceWithConsent track by $index">
+                                    <!--<div class="row consentTitleArea">-->
                                     <div class="row">
-                                        <div class="consentDetailsArea">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:40%;"/>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <h2 class="pull-left serviceNameOnConsentTitleArea">{{i.name}}</h2>
+                                        </div>
+                                    </div><!-- /row -->
+                                    <div class="row">
+                                      <!--<div class="consentDetailsArea">-->
+                                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 consentDetailsArea">
                                             <p>{{i.description.short}}</p>
                                             <h2 class="pull-left"><b>DATA SHARED FROM<br>{{i.name}}</b></h2>
-                                            <button type="button"
-                                                    class="btn btn-info pull-right"
-                                                    ng-click="showConsentModal(i)">
-                                                View CONSENT
-                                            </button>
-
+                                            <button type="button" class="btn btn-info pull-right" ng-click="showConsentModal(i)">View Consent</button>
                                             <div class="clearfix"></div>
-                                            <!--FIX_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
-                                            <!--FIXED-->
                                             <ul>
                                                 <li ng-repeat="(key, value) in i.categories track by $index">
                                                     <label>
@@ -220,53 +134,39 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                            <!--END_FIX-->
-                                            <!--TODO_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
-                                            <!-- <ul>
-                                                <li ng-repeat="j in i.categories track by $index">
-                                                    <span>{{j}}</span>
-                                                </li>
-                                            </ul> -->
+
                                             <label class="pull-right">
-                                                <!--TODO_FOR_DEMO: ACTIVE-CHECKBOX OF VIEW-CONSENT-PANEL IS NOT ALWAYS CHECKED-->
-                                                <!--!!!FIXED!!!-->
                                                 <input icheck type="checkbox" ng-model="i.consentStatus" checked>
                                                 <!--HH: SHOULD BE AN ALTERNATIVE TO ABOVE. TEST IF ABOVE DOESN'T WORK-->
                                                 <!--<input icheck type="checkbox" ng-model="i.consentStatus" ng-true-value="active">-->
-
                                                 <span>Active</span>
                                             </label>
                                             <!--<span class="pull-right">Active <i class="fa fa-check-square-o"></i></span>-->
-                                        </div>
-                                    </div>
-                                </div>
+                                        </div><!-- /consentDetailsArea -->
+                                    </div><!-- /row -->
+                                </div><!-- /row -->
+                                <!-- /datasourceWithConsent -->
+                            </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
 
-                            </div>
-
-                            <div class="col-lg-6 datasinkArea">
-
-                                <!--TODO_FOR_DEMO: UI SHOULD ONLY LIST potentialDataSinkWithContract IF THEY DON'T HAVE A CONSENT-->
-                                <!--!!!FIXED!!!-->
-                                <div class="row" ng-repeat="i in potentialDataSinkWithContract track by $index">
-                                    <div class="row consentTitleArea">
-                                        <div class="col-lg-6">
-                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:50%;"/>
+                            <!-- DataSink Section -->
+                            <!--<div class="col-lg-6 datasinkArea">-->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <!-- potentialDataSinkWithContract -->
+                                <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in potentialDataSinkWithContract track by $index">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:40%;"/>
                                         </div>
                                         <div class="col-lg-6 col-lg-offset">
-                                            <h2 class="pull-right">{{i.name}}</h2>
+                                            <h2 class="pull-left serviceNameOnConsentTitleArea">{{i.name}}</h2>
                                         </div>
-                                    </div>
+                                    </div><!-- /row -->
                                     <div class="row">
-                                        <div class="consentDetailsArea">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 consentDetailsArea">
                                             <p>{{i.description.short}}</p>
                                             <h2 class="pull-left"><b>THIS DATA COULD BE<br>SHARED TO<br>{{i.name}}</b></h2>
-                                            <button type="button"
-                                                    class="btn btn-primary pull-right"
-                                                    ng-click="showConsentModal(i)">
-                                                Give CONSENT
-                                            </button>
+                                            <button type="button" class="btn btn-primary pull-right" ng-click="showConsentModal(i)">Give Consent</button>
                                             <div class="clearfix"></div>
-                                            <!--FIX_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
                                             <ul>
                                                 <li ng-repeat="(key, value) in data.categories track by $index">
                                                     <label>
@@ -282,40 +182,27 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                            <!--END_FIX-->
-                                            <!--TODO_FOR_DEMO: FIX THIS TO CATEGORIES THAT ARE AVAILABLE FROM DATA SOURCE-->
-                                            <!--TODO_FOR_DEMO: IT NOW DISPLAY ALL THE CATEGORIES THAT SINK CAN USE-->
-                                            <!-- <ul>
-                                                <li ng-repeat="j in data.categories track by $index">
-                                                    <span>{{j}}</span>
-                                                </li>
-                                            </ul> -->
+                                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                                    </div><!-- /row -->
+                                </div><!-- /row -->
+                                <!-- /potentialDataSinkWithContract -->
 
+                                <!-- datasinkWithConsent -->
+                                <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in datasinkWithConsent track by $index">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:40%;"/>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row" ng-repeat="i in datasinkWithConsent track by $index">
-                                    <div class="row consentTitleArea">
-                                        <div class="col-lg-6">
-                                            <img ng-src="{{i.img_url_logo}}" class="pull-right" style="width:50%;"/>
-                                        </div>
-                                        <div class="col-lg-6 col-lg-offset">
-                                            <h2 class="pull-right">{{i.name}}</h2>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <h2 class="pull-left serviceNameOnConsentTitleArea">{{i.name}}</h2>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="consentDetailsArea">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 consentDetailsArea">
                                             <p>{{i.description.short}}</p>
                                             <h2 class="pull-left"><b>DATA SHARED TO<br>{{i.name}}</b></h2>
-                                            <button type="button"
-                                                    class="btn btn-info pull-right"
-                                                    ng-click="showConsentModal(i)">
-                                                    View CONSENT
-                                            </button>
-
+                                            <button type="button" class="btn btn-info pull-right" ng-click="showConsentModal(i)">View Consent</button>
                                             <div class="clearfix"></div>
-                                            <!--FIX_FOR_DEMO: FIX THE DOT-NOTATION. ONLY SHOW MAIN CATEGORY-->
                                             <ul>
                                                 <li ng-repeat="(key, value) in data.categories track by $index">
                                                     <label>
@@ -331,25 +218,18 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                            <!--END_FIX-->
-                                            <!--TODO_FOR_DEMO: SHOULD THIS DISPLAY CATEGORIES OF SOURCE THAT ARE BEING SHARED?-->
-                                            <!-- <ul>
-                                                <li ng-repeat="j in data.categories track by $index">
-                                                    <span>{{j}}</span>
-                                                </li>
-                                            </ul> -->
                                             <label class="pull-right" ng-init="i.consentStatus=true">
                                                 <input icheck type="checkbox" ng-model="i.consentStatus" checked>
                                                 <span>Active</span>
                                             </label>
                                             <!--<span class="pull-right">Active <i class="fa fa-check-square-o"></i></span>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
+                                        </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                                    </div><!-- /row -->
+                                </div><!-- /row -->
+                                <!-- /datasinkWithConsent -->
+                            </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                            <!-- /DataSink Section -->
+                        </div><!-- /row -->
                     </div>
                 </div>
             </div>

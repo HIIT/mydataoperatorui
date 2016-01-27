@@ -1,90 +1,94 @@
 <div class="wrapper wrapper-content" ng-controller="ProfileCtrl as controller">
-    <div class="container animated fadeInRight">
+    <div class="animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox">
-                    <div class="ibox-content">
+            <div class="col-sm-12">
+              <div class="ibox">
+                <div class="ibox-content no-borders">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <div class="contact-box">
+                        <a>
+                          <div class="col-sm-4">
+                              <div class="text-center">
+                                <img class="img-circle m-t-xs img-responsive" ng-src="{{userInfo.img_url_avatar}}" />
+                              </div>
+                          </div>
+                          <div class="col-sm-8">
+                              <h3><strong>{{userInfo.firstName}} {{userInfo.lastName}}</strong></h3>
+                              <p><i class="fa fa-map-marker"></i> {{userInfo.address1}}</p>
+                              <p><i class="fa fa-envelope-o"></i> {{userInfo.email}}</p>
+                              <p><i class="fa fa-birthday-cake"></i> 29/02/1983</p>
+                          </div>
+                          <div class="clearfix"></div>
+                        </a>
+                      </div>
+
+                      <div class="user-button" style="margin-top:3em; margin-bottom:3em;">
                         <div class="row">
-                            <div class="col-lg-2">
-                                <h2 class="pull-right">Name</h2>
-                            </div>
-                            <div class="col-lg-5">
-                                <h1 class="profileName">{{userInfo.firstName}} {{userInfo.lastName}}</h1>
-                            </div>
-                            <div class="col-lg-5">
-                                <!--
-								<div class="row">
-                                    <div class="col-lg-2">
-                                        <h1 class="actAccount">{{numberOfServices}}</h1>
-                                    </div>
-                                    <div class="col-lg-4 p-sm">
-                                        <h2>Active Services</h2>
-                                    </div>
-                                </div>
-								
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <button class="btn btn-info btn-outline">
-                                            View your Active Services
-                                        </button>
-                                    </div>
-                                </div>
-								-->
-                            </div>
+                          <div class="col-md-6" style="margin-top:3em;">
+                            <button class="btn btn-primary btn-block" type="button"><i class="fa fa-gear"></i> Edit profile</button>
+                          </div>
+                          <div class="col-md-6" style="margin-top:3em;">
+                            <button class="btn btn-danger btn-block" type="button"><i class="fa fa-warning"></i> Deactive Account</button>
+                          </div>
                         </div>
+                      </div>
 
-                        <div class="row m-t-md">
-                            <div class="col-lg-2">
-                                <h2 class="pull-right">Account</h2>
-                            </div>
-                            <div class="col-lg-5">
-                                <h2>{{userInfo.firstName}}.{{userInfo.lastName}}</h2>
-                            </div>
-                        </div>
+                      <div>
+                        <h5>Statics</h5>
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <td>Services</td>
+                              <td>25</td>
+                            </tr>
+                            <tr>
+                              <td>Contracts</td>
+                              <td>50</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                              <td>Consents</td>
+                              <td>100</td>
+                            </tr>
+                          </tbody>
+                        </table>
 
-                        <div class="row m-t-sm">
-                            <div class="col-lg-2">
-                                <h2 class="pull-right">E-mail</h2>
-                            </div>
-                            <div class="col-lg-5">
-                                <h2>{{userInfo.email}}</h2>
-                            </div>
-                            <div class="col-lg-5">
-                                <button class="btn btn-primary">
-                                    Facebook Connect
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="row m-t-sm">
-                            <div class="col-lg-2">
-
-                            </div>
-                            <div class="col-lg-5">
-                                <button class="btn btn-info btn-outline">
-                                    Deactivate Account
-                                </button>
-                            </div>
-                            <div class="col-lg-5">
-                                <button class="btn btn-info btn-outline">
-                                    Stop All Activity Sharing
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="row m-t-sm">
-                            <div class="col-lg-2">
-
-                            </div>
-                            <div class="col-lg-5">
-                                <h2>Member since {{userInfo.created}}</h2>
-                            </div>
-
-                        </div>
-
+                      </div>
 
                     </div>
+
+                    <div class="col-sm-12 col-md-6">
+                      <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Facebook Connect</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <p class="text-left">
+                              Lorem ipsum dolor sit amet, mea cibo commodo id. Sea no error cetero platonem. Ad ius dicant complectitur, qui ex tempor dolorem persequeris. Nec partem inermis consequat et. Eos in malorum antiopam partiendo, mel et diceret incorrupte, cu agam posidonium his.
+                            </p>
+                            <p>
+                              <button class="btn btn-success btn-block" type="button"><i class="fa fa-facebook"> </i> Connect to Facebook</button>
+                            </p>
+                        </div>
+                      </div>
+                      <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Manage Activity Sharing</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <p class="text-left">
+                              Lorem ipsum dolor sit amet, mea cibo commodo id. Sea no error cetero platonem. Ad ius dicant complectitur, qui ex tempor dolorem persequeris. Nec partem inermis consequat et. Eos in malorum antiopam partiendo, mel et diceret incorrupte, cu agam posidonium his.
+                            </p>
+                            <p>
+                              <button class="btn btn-danger btn-block" type="button"><i class="fa fa-warning"></i> Stop Activity Sharing</button>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>

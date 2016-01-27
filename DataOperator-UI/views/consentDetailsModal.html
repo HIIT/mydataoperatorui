@@ -1,10 +1,10 @@
 <div class="consentDetailsModal">
 
     <div class="row consentDetailsHeader">
-        <div class="col-lg-6">
+        <div class="col-sm-6 col-md-6 col-lg-6">
             <h2>How data is shared between {{consent.source.name}} and {{consent.sink.name}} </h2>
         </div>
-        <div class="col-lg-6">
+        <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="btn-group pull-right">
                 <button ng-if='nothadConsent()' ng-click="cancel()" type="button" class="btn btn-default btn-outline">
                     CANCEL
@@ -27,7 +27,7 @@
     </div>
 
     <div class="row consentDetailsInfo">
-        <div class="col-lg-7">
+        <div class="col-sm-7 col-md-7 col-lg-7">
             <ul>
                 <li>
                     <label>
@@ -42,6 +42,8 @@
                     </label>
                 </li>
             </ul>
+        </div>
+        <div class="col-sm-5 col-md-5 col-lg-5">
         </div>
         <!--<div class="col-lg-5">-->
             <!--<h2>Document Information</h2>-->
@@ -62,13 +64,13 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="tabs-container">
                 <tabset>
                     <tab heading="">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-5">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
 
                                     <img class='consentDetailsLogo' ng-src="{{consent.source.img_url_logo}}"/>
                                     <!--<h2 ng-if="relatedService.role === 'Sink'">What Information sharing to {{relatedService.name}}</h2>-->
@@ -84,10 +86,10 @@
                                             <!--!!!FIXED!!!-->
                                             <input icheck type="checkbox" ng-model="value.checked">
                                             <label>
-                                                <h3 ng-click="value.isOpen = !value.isOpen">{{key}}
+                                                <span class="consentViewLabelText marginFromLeft-1" ng-click="value.isOpen = !value.isOpen">{{key}}
                                                     <span ng-hide="value.isOpen || value.subCates.length === 0" class="fa fa-plus"></span>
                                                     <span ng-if="value.subCates.length > 0" ng-show="value.isOpen" class="fa fa-minus"></span>
-                                                </h3>
+                                                </span>
                                             </label >
                                             <ul ng-show="value.isOpen">
                                                 <li ng-repeat="i in value.subCates">
@@ -101,22 +103,22 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-lg-7">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <img class='consentDetailsLogo' ng-src="{{consent.sink.img_url_logo}}"/>
 
                                     <h2>How {{consent.sink.name}} can use this data</h2>
-                                    <div class="row">
-                                        <div class="col-lg-12">
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-lg-12">-->
                                             <ul>
                                                 <li ng-repeat="(key, value) in licenses">
                                                     <!--TODO_FOR_DEMO: You cannot expand top-level without selecting it-->
                                                     <!--!!!FIXED!!!-->
                                                     <input icheck type="checkbox" ng-model="value.checked">
                                                     <label>
-                                                        <h3 ng-click="value.isOpen = !value.isOpen">{{key}}
+                                                        <span class="consentViewLabelText" ng-click="value.isOpen = !value.isOpen">{{key}}
                                                             <span ng-hide="value.isOpen || value.subCates.length === 0" class="fa fa-plus"></span>
                                                             <span ng-if="value.subCates.length > 0" ng-show="value.isOpen" class="fa fa-minus"></span>
-                                                        </h3>
+                                                        </span>
                                                     </label >
                                                     <ul ng-show="value.isOpen">
                                                         <li ng-repeat="i in value.subCates">
@@ -129,7 +131,7 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        <!--</div>-->
                                         <!--<div class="col-lg-g">-->
                                             <!--<ul>-->
                                                 <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Sales & Marketing</h3></label></li>-->
@@ -138,7 +140,7 @@
                                                 <!--<li><label><input icheck type="checkbox" ng-model="settings.m"><h3>Resale</h3></label></li>-->
                                             <!--</ul>-->
                                         <!--</div>-->
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>
@@ -173,4 +175,3 @@
         <!--<button type="button" class="btn btn-primary">Go to {{data.name}}</button>-->
     <!--</a>-->
 </div>
-

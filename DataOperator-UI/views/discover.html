@@ -1,42 +1,76 @@
 <div class="wrapper wrapper-content" ng-controller="DiscoveryCtrl as controller">
-    <div class="container animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox">
-                    <div class="ibox-content">
-                        <!--FIX_FOR_DEMO: New and Popular Services should be at top of panel-->
-                        <!--TODO-->
-                        <div ng-repeat="(kind, services) in sortedListofService">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <h1>{{kind}}</h1>
-                                </div>
-                                <!--<div class="col-lg-4">-->
-                                    <!--<h2 class="pull-right">See all {{kind}}</h2>-->
-                                <!--</div>-->
-                            </div>
+  <div class="animated fadeInRight">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="ibox">
+          <div class="ibox-content no-borders">
+            <!--TODO: New and Popular Services should be at top of panel-->
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-right">
+                <!-- New Services -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 marginFromTop-2">
+                    <h1>New Services</h1>
+                  </div>
+                </div><!-- /row -->
+                <div class="row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 center-block text-center marginFromTop-1" ng-repeat="j in sortedListofService['New Services']">
+                    <a ng-href="#/index/servicesdetails/{{j.serviceID}}">
+                      <img ng-src="{{j.img_url_overview}}" class="img-thumbnail img-responsive" style="width: 100%;"/>
+                      <h3 class="homeServiceTitle hidden-xs">{{j.name}}</h3>
+                    </a>
+                  </div><!-- /col-xs-6 col-sm-3 col-md-2 center-block text-center marginFromTop-1 -->
+                </div><!-- /row -->
+                <!-- /New Services -->
+              </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
 
-                            <div class="row">
-                                <!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
-                                <!--<div class="col-lg-3" ng-repeat="j in services">-->
-								<!-- JY: Following div modified: added style="margin-bottom: 40px; -->
-                                <div class="col-lg-2 center-block text-center" ng-repeat="j in services" style="margin-bottom: 40px;">
-                                    <a ng-href="#/index/servicesdetails/{{j.serviceID}}">
-										<!-- HH: Remove photos and use only logos for all services -->
-										<!-- <img ng-src="{{j.img_url_logo}}" class="serviceThumbnail"/> -->
-										<!-- JY: Modified based on https://docs.google.com/presentation/d/11VHc65_UpH82ghynP8YsJeHDDtjmOHaH32FBMYywVvE/edit#slide=id.p -->
-                                        <!--<img ng-src="{{j.img_url_overview}}" class="serviceThumbnail"/>-->
-                                        <img ng-src="{{j.img_url_overview}}" class="img-thumbnail img-responsive" style="width: 100%;"/>										
-										<!-- JY: Following h2 modified: added style="font-size: 20px;" -->
-                                        <h2 style="font-size: 20px;">{{j.name}}</h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <!-- Popular Services -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 marginFromTop-2">
+                    <h1>Popular Services</h1>
+                  </div>
+                </div><!-- /row -->
+                <div class="row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 center-block text-center marginFromTop-1" ng-repeat="j in sortedListofService['Popular Services']">
+                    <a ng-href="#/index/servicesdetails/{{j.serviceID}}">
+                      <img ng-src="{{j.img_url_overview}}" class="img-thumbnail img-responsive" style="width: 100%;"/>
+                      <h3 class="homeServiceTitle hidden-xs">{{j.name}}</h3>
+                    </a>
+                  </div><!-- /col-xs-6 col-sm-3 col-md-2 center-block text-center marginFromTop-1 -->
+                </div><!-- /row -->
+                <!-- /Popular Services -->
+              </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+            </div><!-- /row -->
 
-                    </div>
+            <!-- ************************************ -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <hr>
+              </div><!-- /col-xs-6 col-sm-3 col-md-2 center-block text-center marginFromTop-1 -->
+            </div><!-- /row -->
+            <!-- ************************************ -->
+
+            <h1 class="marginFromTop-2">Services by category</h1>
+            <div ng-repeat="(kind, services) in sortedListofService">
+              <div class="row">
+                <div class="col-sm-12 col-md-12 marginFromTop-2">
+                  <h2>{{kind}}</h2>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+              </div><!-- /row -->
+              <div class="row">
+                <div class="col-xs-6 col-sm-3 col-md-2 center-block text-center marginFromTop-1" ng-repeat="j in services">
+                  <a ng-href="#/index/servicesdetails/{{j.serviceID}}">
+                    <img ng-src="{{j.img_url_overview}}" class="img-thumbnail img-responsive" style="width: 100%;"/>
+                    <h3 class="homeServiceTitle hidden-xs">{{j.name}}</h3>
+                  </a>
+                </div><!-- /col-xs-6 col-sm-3 col-md-2 center-block text-center marginFromTop-1 -->
+              </div><!-- /row -->
+            </div><!-- /sortedListofService -->
+            <!-- ************************************ -->
+          </div><!-- /ibox-content -->
+        </div><!-- /ibox -->
+      </div><!-- /col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
+    </div><!-- /row -->
+  </div><!-- /animated fadeInRight -->
+</div><!-- /wrapper wrapper-content -->

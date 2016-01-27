@@ -28,7 +28,7 @@ var fakeUserInfo = {
 
 function MainCtrl($scope, $state, $http) {
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/userInformation?select=gender,status,firstName,lastName,email,address1,address2,cities_id,regions_id,countries_id,languages_id,nationalities_id,img_url_avatar,created').
+    $http.get('http://127.0.0.1:8080/ui/userInformation?select=gender,status,firstName,lastName,email,address1,address2,cities_id,regions_id,countries_id,languages_id,nationalities_id,img_url_avatar,created').
         success(function(data, status, headers, config) {
             $scope.userInfo = data['1']
             console.log(data)
@@ -40,7 +40,7 @@ function MainCtrl($scope, $state, $http) {
 
 function ProfileCtrl($scope, $http) {
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/userInformation?select=gender,status,firstName,lastName,email,address1,address2,cities_id,regions_id,countries_id,languages_id,nationalities_id,img_url_avatar,created').
+    $http.get('http://127.0.0.1:8080/ui/userInformation?select=gender,status,firstName,lastName,email,address1,address2,cities_id,regions_id,countries_id,languages_id,nationalities_id,img_url_avatar,created').
         success(function(data, status, headers, config) {
             $scope.userInfo = data['1']
             console.log(data)
@@ -48,7 +48,7 @@ function ProfileCtrl($scope, $http) {
         error(function(data, status, headers, config) {
             //$scope.userInfo = fakeUserInfo["214421"]
         });
-    $http.get('http://178.62.244.150:8080/ui/myServices/numberOfServices?status=All').
+    $http.get('http://127.0.0.1:8080/ui/myServices/numberOfServices?status=All').
         success(function(data, status, headers, config) {
             $scope.numberOfServices = data.numberOfServices
             console.log(data)
@@ -145,7 +145,7 @@ function MyServiceCtrl ($scope, $http) {
         }
     }
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get("http://178.62.244.150:8080/ui/myServices?categories=&current=0&count=15").success(function(data) {
+    $http.get("http://127.0.0.1:8080/ui/myServices?categories=&current=0&count=15").success(function(data) {
             console.log(data)
             $scope.data = data
         })
@@ -156,20 +156,20 @@ function MyServiceCtrl ($scope, $http) {
 }
 
 function MyServiceCircleCtrl ($http) {
-	
-	drawCircle(fakeAPI_MyServices())
-	
-    // $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    // $http.get('http://178.62.244.150:8080/ui/myServices?categories=&current=0&count=15').success(function(data, status, headers, config) {
-                // drawCircle(data)
-            // }).
-            // error(function(data, status, headers, config) {
-                // //drawCircle(fakeAPI_MyServices())
-            // });
 
+	drawCircle(fakeAPI_MyServices());
+    /*
+     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
+     $http.get('http://127.0.0.1:8080/ui/myServices?categories=&current=0&count=13').success(function(data, status, headers, config) {
+                 drawCircle(data)
+             }).
+             error(function(data, status, headers, config) {
+                drawCircle(fakeAPI_MyServices())
+             });
+     */
     function drawCircle (data) {
 
-        var diameter = 950,
+        var diameter = 700,
             radius = diameter / 2,
             innerRadius = radius - 120;
 
@@ -428,7 +428,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             "sink_id": relatedService.serviceID,
             "consent_id": view_consent_by_id
         })
-        $http.post("http://178.62.244.150:8080/ui/ConsentView", sinkmsg).success(function(data, status) {
+        $http.post("http://127.0.0.1:8080/ui/ConsentView", sinkmsg).success(function(data, status) {
             console.log('sink+consentView')
             console.log(data)
             $scope.licenses = reorganize(data.sink.licenses)
@@ -448,7 +448,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             "sink_id": myService.serviceID,
             "consent_id": view_consent_by_id
         })
-        $http.post("http://178.62.244.150:8080/ui/ConsentView", sourcemsg).success(function(data, status) {
+        $http.post("http://127.0.0.1:8080/ui/ConsentView", sourcemsg).success(function(data, status) {
             console.log('source+consentView')
             console.log(data)
             $scope.licenses = reorganize(data.sink.licenses)
@@ -555,7 +555,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
     $scope.removeConsent = function () {
 
         //FIX_FOR_DEMO: withdraw consent
-        $http.get("http://178.62.244.150:8080/ui/disable_consent/" + view_consent_by_id).success(function(data, status) {
+        $http.get("http://127.0.0.1:8080/ui/disable_consent/" + view_consent_by_id).success(function(data, status) {
             console.log(data)
             $modalInstance.close('removeConsent');
         }).error(function(err){
@@ -563,8 +563,8 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
         })
         //END_FIX
 
-        
-		
+
+
 		// For faking the Consent Withdraw in UI-code
         // delete $scope.relatedService['consentID']
         // delete $scope.relatedService['consentStatus']
@@ -599,7 +599,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
         }
         console.log("selected categories")
         console.log(cats)
-		
+
 		// get the selected licenses
         console.log($scope.licenses)
 		var lics = []
@@ -619,13 +619,13 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
         // licenses[i].subCates
 		console.log("selected licenses")
 		console.log(lics)
-		
+
 
         if (relatedService.role === 'Source') {
             var msg = JSON.stringify({"service_id": relatedService.serviceID, "categories": cats})
-            $http.post("http://178.62.244.150:8080/protection/resourceSets", msg).success(function(data, status) {
+            $http.post("http://127.0.0.1:8080/protection/resourceSets", msg).success(function(data, status) {
                 console.log(data)
-		
+
                 var newmsg =
                 {
                     "source_id": relatedService.serviceID,
@@ -634,7 +634,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
                     "usage_license": lics,
                     "status": "active"
                 }
-                $http.post("http://178.62.244.150:8080/ui/give_consent", JSON.stringify(newmsg)).success(function(data, status) {
+                $http.post("http://127.0.0.1:8080/ui/give_consent", JSON.stringify(newmsg)).success(function(data, status) {
                     console.log('consent made!')
                     $modalInstance.close('giveConsent');
                 }).error(function(err){
@@ -648,7 +648,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             })
         } else {
             var msg = JSON.stringify({"service_id": myService.serviceID, "categories": cats})
-            $http.post("http://178.62.244.150:8080/protection/resourceSets", msg).success(function(data, status) {
+            $http.post("http://127.0.0.1:8080/protection/resourceSets", msg).success(function(data, status) {
                 console.log(data)
                 var newmsg =
                 {
@@ -658,7 +658,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
                     "usage_license": lics,
                     "status": "active"
                 }
-                $http.post("http://178.62.244.150:8080/ui/give_consent", JSON.stringify(newmsg)).success(function(data, status) {
+                $http.post("http://127.0.0.1:8080/ui/give_consent", JSON.stringify(newmsg)).success(function(data, status) {
                     console.log('consent made!')
                     $modalInstance.close('giveConsent');
                 }).error(function(err){
@@ -671,7 +671,7 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             })
         }
 
-        
+
         //below is for faking the process in UI, should be removed when back-end endpoints of checking consent is ready
         // var sinkIndex = $scope.$parent.potentialDataSinkWithContract.indexOf($scope.relatedService)
         // var sourceIndex = $scope.$parent.potentialDataSourceWithContract.indexOf($scope.relatedService)
@@ -688,9 +688,9 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
 }
 
 function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
-    
+
     var serviceID = $stateParams.id
-    $http.get('http://178.62.244.150:8080/ui/services/' + serviceID).
+    $http.get('http://127.0.0.1:8080/ui/services/' + serviceID).
         success(function(data, status, headers, config) {
             console.log("ui/services/ + serviceID")
             console.log(data)
@@ -708,7 +708,7 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
             //getServicesWithConsentDetails($scope.data)
         });
 
-    
+
     function getServicesWithConsentDetails  (data) {
 
         $scope.potentialDataSinkWithoutContract = []
@@ -717,7 +717,7 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
         Object.keys(data.potentialServicesWithoutContract).forEach(function(id) {
             var obj = data.potentialServicesWithoutContract[id]
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-            $http.get('http://178.62.244.150:8080/ui/services/' + id).
+            $http.get('http://127.0.0.1:8080/ui/services/' + id).
                 success(function(data, status, headers, config) {
                     data['serviceID'] = id
                     if (obj.role === 'Sink' || obj.role === 'Both') {
@@ -748,17 +748,17 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
         Object.keys(data.potentialServicesWithContract).forEach(function(id) {
             var obj = data.potentialServicesWithContract[id]
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-            $http.get('http://178.62.244.150:8080/ui/services/' + id).
+            $http.get('http://127.0.0.1:8080/ui/services/' + id).
                 success(function(data, status, headers, config) {
 
                     var d = data[id]
                     d['serviceID'] = id
                     d['role'] = obj.role
                     console.log()
-                    if (obj.role === 'Sink' || obj.role === 'both') {
+                    if (obj.role === 'Sink' || obj.role === 'Both') {
                         $scope.potentialDataSinkWithContract.push(d)
                     }
-                    if (obj.role === 'Source' || obj.role === 'both') {
+                    if (obj.role === 'Source' || obj.role === 'Both') {
                         //FIX_FOR_DEMO: FIX THE DOT-NOTATION. CHANGE TO THE SAME STYLE SHOWING IN CONSENT DETAIL MODAL
                         d['categories'] = reorganize(d['categories'])
                         $scope.potentialDataSourceWithContract.push(d)
@@ -789,14 +789,14 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
         Object.keys(data.servicesWithConsent).forEach(function(id) {
             var obj = data.servicesWithConsent[id]
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-            $http.get('http://178.62.244.150:8080/ui/services/' + id).
+            $http.get('http://127.0.0.1:8080/ui/services/' + id).
                 success(function(data, status, headers, config) {
                     var d = data[id]
                     d['serviceID'] = id
                     d['consentID'] = obj.consentID
 
                     d['consentStatus'] = (obj.consentStatus === 'active')
-                    
+
                     //d['consentStatus'] = obj.consentStatus
                     d['duration'] = obj.duration
                     d['role'] = obj.role
@@ -914,7 +914,7 @@ function ModalAddServiceInstanceStepTwoCtrl ($scope, $modalInstance, $modal) {
 function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $http, $stateParams, $state) {
     var serviceID = $stateParams.id
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/services/' + serviceID).
+    $http.get('http://127.0.0.1:8080/ui/services/' + serviceID).
         success(function(data, status, headers, config) {
             console.log("Data: " + angular.toJson(data, true))
             $scope.serviceDetailsForForeignLogin = data[serviceID]
@@ -951,22 +951,22 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
     $scope.perform_login = function (user) {
         // perform foreign_login_step_1
         $( "#spinner" ).show( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
         });
-        
+
         $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-        $http.post('http://178.62.244.150:8080/ui/foreign_login', { "service_id": serviceID, "username": user.username, "password": user.password }).
+        $http.post('http://127.0.0.1:8080/ui/foreign_login', { "service_id": serviceID, "username": user.username, "password": user.password }).
             success(function(data, status, headers, config) {
                 // perform foreign_login_step_1
                 $( "#spinner" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });
                 console.log("Status: " + status)
                 console.log("Config: " + config)
                 console.log("Data: " + angular.toJson(data, true))
                 $scope.sct = data
                 $( "#sct_view" ).show( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });
                 //$scope.serviceID = serviceID
                 //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
@@ -975,19 +975,19 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                 console.log("Status: " + status)
                 console.log("Config: " + angular.toJson(data, true))
                 console.log("Data: " + angular.toJson(data, true))
-                
+
                 $( "#spinner" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });
                 if (status == 403) {
                     $( "#login_failed_403" ).show( "scale", "fast", function() {
-                        // Animation complete.            
+                        // Animation complete.
                     });
                 }
                 else {
                     $( "#login_failed_500" ).show( "scale", "fast", function() {
-                        // Animation complete.            
-                    });                    
+                        // Animation complete.
+                    });
                 }
                 //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
                 //makeListOfserviceCanAccess($scope.serviceDetails)
@@ -995,43 +995,43 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
             });
     };
 
-    
+
     $scope.accept_sct = function () {
         // perform foreign_login_step_1
         $( "#spinner" ).show( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
         });
-                
+
         console.log("sct: " + JSON.stringify($scope.sct))
-        
+
         $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-        $http.post('http://178.62.244.150:8080/ui/accept_contract', JSON.parse(JSON.stringify($scope.sct))).
+        $http.post('http://127.0.0.1:8080/ui/accept_contract', JSON.parse(JSON.stringify($scope.sct))).
             success(function(data, status, headers, config) {
                 // perform accept_contract
                 $( "#spinner" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });
                 console.log("Status: " + status)
                 console.log("Config: " + angular.toJson(data, true))
                 console.log("Data: " + angular.toJson(data, true))
                 $scope.response_data = data
                 /*$( "#sct_view" ).show( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });*/
                 $( "#foreign_login_step_1" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                     //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#sct_view" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                     //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#addService_2" ).show( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                     //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#addService_1" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                     //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 /*
@@ -1054,36 +1054,36 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                 console.log("Status: " + status)
                 console.log("Config: " + angular.toJson(data, true))
                 console.log("Data: " + angular.toJson(data, true))
-                
+
                 $( "#spinner" ).hide( "scale", "fast", function() {
-                    // Animation complete.            
+                    // Animation complete.
                 });
                 $( "#sct_failed" ).show( "scale", "fast", function() {
-                        // Animation complete.            
-                });           
+                        // Animation complete.
+                });
                 //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
                 //makeListOfserviceCanAccess($scope.serviceDetails)
                 //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
             });
-            
+
     };
-    
-    $scope.discard_sct = function () {        
+
+    $scope.discard_sct = function () {
         $( "#foreign_login_step_1" ).hide( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
             //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
         $( "#sct_view" ).hide( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
             //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
-        
+
         $( "#addService_3" ).show( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
             //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
         $( "#addService_1" ).hide( "scale", "fast", function() {
-            // Animation complete.            
+            // Animation complete.
             //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
         /*
@@ -1100,7 +1100,7 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
         });
         */
     }
-    
+
     $scope.close_login = function () {
         // hide foreign_login_step_1
           $( "#foreign_login_step_1" ).hide( "scale", "fast", function() {
@@ -1118,7 +1118,7 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
 function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
     var serviceID = $stateParams.id
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/services/' + serviceID).
+    $http.get('http://127.0.0.1:8080/ui/services/' + serviceID).
         success(function(data, status, headers, config) {
             console.log(data)
             $scope.serviceDetails = data[serviceID]
@@ -1150,7 +1150,7 @@ function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
     function makeListOfserviceCanAccess(serviceDetails) {
         Object.keys(serviceDetails.potentialServicesWithContract).forEach(function(id) {
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-            $http.get('http://178.62.244.150:8080/ui/services/' + id).
+            $http.get('http://127.0.0.1:8080/ui/services/' + id).
                 success(function(data, status, headers, config) {
                     console.log(data)
                     $scope.servicesCanAccess.push(data[id])
@@ -1165,7 +1165,7 @@ function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
 
 function HomeCtrl ($scope, $http) {
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/services?categories=Health,Fitness,Shopping,Location&current=0&count=15&labels=new')
+    $http.get('http://127.0.0.1:8080/ui/services?categories=Health,Fitness,Shopping,Location&current=0&count=15&labels=new')
         .success(function(data) {
             $scope.availableServices = data
         }
@@ -1310,11 +1310,13 @@ function DiscoveryCtrl ($scope, $http) {
         return sortedServices
     }
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
-    $http.get('http://178.62.244.150:8080/ui/services?categories=Health,Fitness,Shopping,Location&current=0&count=15&labels=new')
+    $http.get('http://127.0.0.1:8080/ui/services?categories=Health,Fitness,Shopping,Location&current=0&count=15&labels=new')
         .success(function(data) {
             $scope.sortedListofService = compileAsGroup(data)
             console.log(data)
-            console.log($scope.sortedListofService)
+            console.log("sortedListofService")
+            console.log($scope.sortedListofService);
+            //console.log(angular.toJson($scope.sortedListofService, true));
         }
         ).error(function(data){
             //$scope.sortedListofService = compileAsGroup(fakeServices)
@@ -1331,4 +1333,3 @@ angular
     .controller('DiscoveryCtrl', DiscoveryCtrl)
     .controller('ServiceDetailCtrl', ServiceDetailCtrl)
     .controller('ProfileCtrl', ProfileCtrl)
-

@@ -44,22 +44,27 @@
 
 .myServicesHeader img {
     padding-top: 12px;
-    height: 28px;
+    width: 90%;
+    max-width: 90%;
 }
 
 .myServicesCircleLegend {
     padding-top: 15px;
 }
-
+/*
 .myServicesHeader h2 {
     color: #17B190;
     padding-top: 7px;
     font-size: 16px;
 }
-
+*/
 /* My services circle view*/
 
 .circlegraph {
+  text-align: center;
+}
+
+.circlegraph2 {
     margin: -200px 0 0 0;
     padding: 0 0 0 80px;
 }
@@ -144,12 +149,14 @@
 
 .welcomeTitle{
     /*font-size: 72px;*/
+    text-align: center;
     font-size: 3em;
-    padding: 0 0 0 25px;
+    /*padding: 0 0 0 25px;*/
 }
 
 .newsTitle {
     font-size: 3em;
+    text-align: center;
     /*padding: 20px 0 0 0;*/
 }
 
@@ -169,11 +176,11 @@
 
 .welcomeMsg {
     text-align: center;
-    /*font-size: 50px;*/
     font-size: 2em;
+    /*font-size: 50px;*/
     /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     /*font-weight: 100;*/
-    margin-top:0.2em;
+    /*margin-top:0.2em;*/
 }
 
 .homeServicePhoto {
@@ -203,6 +210,10 @@
     font-size: 72px;
 }
 
+.discoverySectionBackground {
+  background-color: #F8F8F8;
+}
+
 /*Service Details*/
 
 .serviceDetailLeftCol {
@@ -212,6 +223,41 @@
 .serviceDetailLeftCol img{
     /*max-height: 230px;*/
     width: 50%;
+}
+
+.serviceDetailLogoContainer {
+  background-color: #F8F8F8;
+  border-radius: 1em;
+  padding: 2em;
+  vertical-align: middle;
+}
+
+.serviceDetailLogo {
+  width: 40%;
+  vertical-align: middle;
+}
+
+.serviceRoleLogo {
+  width: 5em;
+  float: right;
+  vertical-align: middle;
+}
+
+.dataFlowLogo {
+  width: 5em;
+  float: right;
+  vertical-align: middle;
+}
+
+.serviceDetailName {
+  font-size: 3em;
+  vertical-align: middle;
+  color: #17B190;
+}
+
+.noCompatibleServicesInfoText {
+  color: #17B190;
+  text-align: center;
 }
 
 .serviceCanAccessDes{
@@ -303,6 +349,11 @@
 }
 
 /*cpnsent detail modal*/
+
+.consentViewLabelText {
+  font-weight:400;
+}
+
 
 .consentDetailsModalPos {
     top: 10px;
@@ -417,6 +468,11 @@
     text-align: right;
 }
 
+
+.serviceNameOnConsentTitleArea {
+    font-size: 2em;
+}
+
 .consentDetailsArea {
     background-color: #F3F3F3;
     padding: 25px 40px 50px 40px;
@@ -520,4 +576,45 @@
 
 p{
     word-break: break-all;
+}
+
+.ibox-content {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.marginFromTop-1 {
+  margin-top:1em;
+}
+
+.marginFromTop-2 {
+  margin-top:2em;
+}
+
+.marginFromTop-5 {
+  margin-top:5em;
+}
+
+.marginFromLeft-1 {
+  margin-left:1em;
+}
+
+.marginFromRight-1 {
+  margin-right:1em;
+}
+
+.marginFromLeft-2 {
+  margin-left:2em;
+}
+
+.marginFromRight-2 {
+  margin-right:2em;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
