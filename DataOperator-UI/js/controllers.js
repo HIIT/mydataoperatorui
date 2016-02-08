@@ -125,6 +125,7 @@ function fakeAPI_MyServices () {
 
 function MyServiceCtrl ($scope, $http) {
     this.title = 'My Service';
+    $scope.noServices = true;
 
     $scope.returnObjLength = function (obj) {
         var t = Object.keys(obj)
@@ -146,11 +147,18 @@ function MyServiceCtrl ($scope, $http) {
     }
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
     $http.get("http://127.0.0.1:8080/ui/myServices?categories=&current=0&count=15").success(function(data) {
-            console.log(data)
-            $scope.data = data
+            console.log("Count of Services: " + $scope.returnObjLength(data));
+            console.log(data);
+            $scope.data = data;
+
+            if($scope.returnObjLength(data) != 0) {
+              // There is services to show --> Hide notification
+              $scope.noServices = false;
+            }
+
         })
         .error(function(data) {
-            console.log(data)
+            console.log(data);
             //$scope.data = fakeAPI_MyServices()
         });
 }
@@ -711,8 +719,11 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
 
     function getServicesWithConsentDetails  (data) {
 
-        $scope.potentialDataSinkWithoutContract = []
-        $scope.potentialDataSourceWithoutContract = []
+        $scope.potentialDataSinkWithoutContract = [];
+        $scope.potentialDataSourceWithoutContract = [];
+
+        $scope.noSinkServicesWithoutContract = true;
+        $scope.noSourceServicesWithoutContract = true;
 
         Object.keys(data.potentialServicesWithoutContract).forEach(function(id) {
             var obj = data.potentialServicesWithoutContract[id]
@@ -721,10 +732,12 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                 success(function(data, status, headers, config) {
                     data['serviceID'] = id
                     if (obj.role === 'Sink' || obj.role === 'Both') {
-                        $scope.potentialDataSinkWithoutContract.push(data[id])
+                        $scope.potentialDataSinkWithoutContract.push(data[id]);
+                        $scope.noSinkServicesWithoutContract = false;
                     }
                     if (obj.role === 'Source' || obj.role === 'Both') {
-                        $scope.potentialDataSourceWithoutContract.push(data[id])
+                        $scope.potentialDataSourceWithoutContract.push(data[id]);
+                        $scope.noSourceServicesWithoutContract = false;
                     }
 
                 }).
@@ -742,8 +755,11 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
 
         });
 
-        $scope.potentialDataSinkWithContract = []
-        $scope.potentialDataSourceWithContract = []
+        $scope.potentialDataSinkWithContract = [];
+        $scope.potentialDataSourceWithContract = [];
+
+        $scope.noSinkServicesWithContract = true;
+        $scope.noSourceServicesWithContract = true;
 
         Object.keys(data.potentialServicesWithContract).forEach(function(id) {
             var obj = data.potentialServicesWithContract[id]
@@ -756,12 +772,14 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                     d['role'] = obj.role
                     console.log()
                     if (obj.role === 'Sink' || obj.role === 'Both') {
-                        $scope.potentialDataSinkWithContract.push(d)
+                        $scope.potentialDataSinkWithContract.push(d);
+                        $scope.noSinkServicesWithContract = false;
                     }
                     if (obj.role === 'Source' || obj.role === 'Both') {
                         //FIX_FOR_DEMO: FIX THE DOT-NOTATION. CHANGE TO THE SAME STYLE SHOWING IN CONSENT DETAIL MODAL
-                        d['categories'] = reorganize(d['categories'])
-                        $scope.potentialDataSourceWithContract.push(d)
+                        d['categories'] = reorganize(d['categories']);
+                        $scope.potentialDataSourceWithContract.push(d);
+                        $scope.noSourceServicesWithContract = false;
                     }
 
                     console.log("potentialDataSinkWithContract")
@@ -786,6 +804,9 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
         $scope.datasinkWithConsent = []
         $scope.datasourceWithConsent = []
 
+        $scope.noSinkServicesWithoutConsent = true;
+        $scope.noSourceServicesWithoutConsent = true;
+
         Object.keys(data.servicesWithConsent).forEach(function(id) {
             var obj = data.servicesWithConsent[id]
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
@@ -801,12 +822,14 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                     d['duration'] = obj.duration
                     d['role'] = obj.role
                     if (obj.role === 'Sink' || obj.role === 'Both') {
-                        $scope.datasinkWithConsent.push(d)
+                        $scope.datasinkWithConsent.push(d);
+                        $scope.noSinkServicesWithoutConsent = false;
                     }
                     if (obj.role === 'Source' || obj.role === 'Both') {
                         //FIX_FOR_DEMO: FIX THE DOT-NOTATION. CHANGE TO THE SAME STYLE SHOWING IN CONSENT DETAIL MODAL
-                        d['categories'] = reorganize(d['categories'])
-                        $scope.datasourceWithConsent.push(d)
+                        d['categories'] = reorganize(d['categories']);
+                        $scope.datasourceWithConsent.push(d);
+                        $scope.noSourceServicesWithoutConsent = false;
                     }
                 }).
                 error(function(data, status, headers, config) {
@@ -1145,22 +1168,41 @@ function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
         });
     }
 
-    $scope.servicesCanAccess = []
+    $scope.sinkServicesCanAccess = []
+    $scope.sourceServicesCanAccess = []
+
+    $scope.noSinkServices = true;
+    $scope.noSourceServices = true;
 
     function makeListOfserviceCanAccess(serviceDetails) {
         Object.keys(serviceDetails.potentialServicesWithContract).forEach(function(id) {
+            var obj = serviceDetails.potentialServicesWithContract[id]
             $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
             $http.get('http://127.0.0.1:8080/ui/services/' + id).
                 success(function(data, status, headers, config) {
                     console.log(data)
-                    $scope.servicesCanAccess.push(data[id])
+                    var d = data[id]
+                    d['serviceID'] = id
+
+                    //$scope.servicesCanAccess.push(d)
+                    //$scope.servicesCanAccess.push(data[id])
+
+                    if (obj.role === 'Sink' || obj.role === 'Both') {
+                        $scope.sinkServicesCanAccess.push(data[id]);
+                        //console.log("Length of sinkServicesCanAccess: " + $scope.sinkServicesCanAccess.length);
+                        $scope.noSinkServices = false;
+                    }
+                    if (obj.role === 'Source' || obj.role === 'Both') {
+                        $scope.sourceServicesCanAccess.push(data[id]);
+                        //console.log("Length of sourceServicesCanAccess: " + $scope.sourceServicesCanAccess.length);
+                        $scope.noSourceServices = false;
+                    }
                 }).
                 error(function(data, status, headers, config) {
                     //$scope.servicesCanAccess.push(fakeAPI_Service(id)[id])
                 });
-        })
+        });
     }
-
 }
 
 function HomeCtrl ($scope, $http) {

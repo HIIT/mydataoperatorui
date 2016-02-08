@@ -19,8 +19,9 @@
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                               <h1 class="text-justify serviceDetailName">{{serviceDetails.name}}</h1>
                             </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                              <img class="img-container serviceRoleLogo" ng-src="http://cc.oulu.fi/~jylikant/dhr/myDataIcons/icon-{{serviceDetails.role}}.png" />
+                            <!-- Add to My Account -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 marginFromTop-1">
+                              <button class="btn btn-primary pull-right btn-lg" ng-click="clickAddTo()">Add to My Account</button>
                             </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
                           </div><!-- /row -->
                           <div class="row">
@@ -29,9 +30,12 @@
                             </div><!-- col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
                           </div><!-- /row -->
                           <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromTop-2">
-                              <span class="pull-right"><a ng-href="{{serviceDetails.link}}">SEE WEB PAGE</a></span>
-                            </div><!-- col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                              <span class="pull-left"><a ng-href="#">SEE WEB PAGE</a></span>
+                            </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                              <img class="img-container serviceRoleLogo" ng-src="http://cc.oulu.fi/~jylikant/dhr/uiIcons/serviceRole{{serviceDetails.role}}.png" />
+                            </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
                           </div><!-- /row -->
                         </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
                       </div><!--/row -->
@@ -39,43 +43,99 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromTop-2"><hr></div>
                       </div><!--/row -->
 
-                      <!-- Service Connections -->
+                      <!-- Potential Services header -->
                       <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marginFromTop-1">
+                          <h3 class="pull-right">Data Sender</h3>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marginFromTop-1">
+                          <img class="img-container serviceRoleLogo pull-left" ng-src="http://cc.oulu.fi/~jylikant/dhr/uiIcons/serviceRoleSource.png" />
+                        </div>
+                        <!-- Service name -->
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                          <h2 class="text-center">Services compatible with</h2>
+                          <h1 class="text-center serviCeonnectionHeaderName">{{serviceDetails.name}}</h1>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marginFromTop-1">
+                          <img class="img-container serviceRoleLogo pull-right" ng-src="http://cc.oulu.fi/~jylikant/dhr/uiIcons/serviceRoleSink.png" />
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marginFromTop-1">
+                          <h3 class="pull-left">Data Receiver</h3>
+                        </div>
+                      </div><!-- /row -->
+
+                      <!-- Potential Services -->
+                      <div class="row">
+                        <!-- Sources -->
+                        <!-- If no sources available -->
+                        <div ng-if="noSourceServices" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 marginFromTop-2 text-center">
+                          <h1 class="headerColor">You don't have any compatible services yet.</h1><br>
+                          <a ui-sref="index.discover">
+                            <button class="btn btn-primary btn-lg">Discover</button>
+                          </a>
+                        </div>
+                        <!-- SourcesService list -->
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 marginFromTop-2">
-                        	<!--
-                          <div class="m-t-xxl">
-                            <h1 class="serviceCanAccessDes text-center">Services compatible with {{serviceDetails.name}}</h1
-                          </div>
-                          -->
-
-                          <!-- <h1 class="serviceCanAccessDes text-center">Services compatible with {{serviceDetails.name}}</h1> -->
-                          <h1 class="text-center">Services compatible with {{serviceDetails.name}}</h1>
-
-                          <!-- If there is compatible services -->
-                          <div class="marginFromTop-2">
-                          	<ul class="serviceCanAccess">
-                          		<li ng-repeat="i in servicesCanAccess">
-                          			<h2>{{i.name}}</h2>
-                          			<p>{{i.description.short}}</p>
-                          			<hr>
-
-                          		</li>
-                          	</ul>
-                          </div>
-                          <!-- If there is not compatible services -->
-                          <!--<div ng-if="!controller.servicesCanAccess" class="marginFromTop-5">-->
-                          <!--
-                          <div ng-hide="noCompatibleServices" class="marginFromTop-5">
-                            <h2 class="noCompatibleServicesInfoText">You don't have any compatible services yet.</h2>
-                            <h2 class="noCompatibleServicesInfoText">Browse the "Discovery" section to add services!</h2>
-                          </div>
-                          -->
+                          <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in sourceServicesCanAccess track by $index">
+                            <!--<div class="row consentTitleArea">-->
+                            <div class="row">
+                              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a ng-href="#/index/myservicesdetails/{{i.serviceID}}">
+                                  <img ng-src="{{i.img_url_logo}}" class="pull-left" style="width:100%;"/>
+                                </a>
+                              </div><!-- /col-xs-2 col-sm-2 col-md-2 col-lg-2 -->
+                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <a ng-href="#/index/myservicesdetails/{{i.serviceID}}">
+                                  <h2 class="pull-left serviceNameOnConsentTitleArea pull-left">{{i.name}}</h2>
+                                </a>
+                              </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                              </div><!-- /col-xs-4 col-sm-4 col-md-4 col-lg-4 -->
+                            </div><!-- /row -->
+                            <div class="row">
+                              <!--<div class="consentDetailsArea">-->
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromBottom-2">
+                                <p>{{i.description.short}}</p>
+                              </div><!-- /consentDetailsArea -->
+                            </div><!-- /row -->
+                          </div><!-- /row -->
                         </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
-
-                        <!-- Add to My Account -->
+                        <!-- /Sources -->
+                        <!-- Sinks -->
+                        <!-- If no sinksl available -->
+                        <div ng-if="noSinkServices" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                          <h1 class="headerColor">You don't have any compatible services yet.</h1><br>
+                          <a ui-sref="index.discover">
+                            <button class="btn btn-primary btn-lg">Discover</button>
+                          </a>
+                        </div>
+                        <!-- SinksService list -->
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 marginFromTop-2">
-                            <button class="btn btn-primary pull-right" ng-click="clickAddTo()">Add to My Account</button>
-                        </div><!-- col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                          <div class="row marginFromLeft-2 marginFromRight-2" ng-repeat="i in sinkServicesCanAccess track by $index">
+                            <!--<div class="row consentTitleArea">-->
+                            <div class="row">
+                              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a ng-href="#/index/myservicesdetails/{{i.serviceID}}">
+                                  <img ng-src="{{i.img_url_logo}}" class="pull-left" style="width:100%;"/>
+                                </a>
+                              </div><!-- /col-xs-2 col-sm-2 col-md-2 col-lg-2 -->
+                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <a ng-href="#/index/myservicesdetails/{{i.serviceID}}">
+                                  <h2 class="pull-left serviceNameOnConsentTitleArea pull-left">{{i.name}}</h2>
+                                </a>
+                              </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                              </div><!-- /col-xs-4 col-sm-4 col-md-4 col-lg-4 -->
+                            </div><!-- /row -->
+                            <div class="row">
+                              <!--<div class="consentDetailsArea">-->
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginFromBottom-2">
+                                <p>{{i.description.short}}</p>
+                              </div><!-- /consentDetailsArea -->
+                            </div><!-- /row -->
+                          </div><!-- /row -->
+                        </div><!-- /col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+                        <!-- /Sinks -->
                       </div><!-- /row -->
                   </div><!-- /ibox-content -->
                 </div><!-- /ibox -->

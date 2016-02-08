@@ -41,6 +41,18 @@
                         </div><!-- /row -->
                     </div><!-- /ibox-content myServicesHeader -->
 
+                    <!-- If there in no services to show -->
+                    <div class="ibox-content no-borders" ng-if="noServices">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h1 class="headerColor">You don't have any compatible services yet.</h1><br>
+                        <a ui-sref="index.discover">
+                          <button class="btn btn-primary btn-lg">Discover</button>
+                        </a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End of If there in no services to show -->
                     <!-- If there is services to show -->
                     <div class="ibox-content no-borders"
                          ng-repeat="(serviceID, serviceDetails) in data"
@@ -139,6 +151,7 @@
                             </div><!-- col-xs-2 col-sm-2 -->
                         </div><!-- /row -->
                     </div><!-- /ibox-content no-borders -->
+                    <!-- End of If there is services to show -->
                 </div><!-- /ibox -->
             </div><!-- /col-xs-12 col-sm-12 col-md-12 col-lg-12 -->
         </div><!-- /row -->
