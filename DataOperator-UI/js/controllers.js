@@ -1187,7 +1187,6 @@ angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
     .controller('MyServiceCtrl',MyServiceCtrl)
-    .controller('MyServiceCircleCtrl', MyServiceCircleCtrl)
     .controller('MyServiceDetailCtrl', MyServiceDetailCtrl)
     .controller('HomeCtrl', HomeCtrl)
     .controller('DiscoveryCtrl', DiscoveryCtrl)
