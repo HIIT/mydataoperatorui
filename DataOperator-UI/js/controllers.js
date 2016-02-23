@@ -15,17 +15,6 @@ var _base64 = {
     _utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}
 }
 
-var fakeUserInfo = {
-    "214421": {
-        "img_url_avatar": "assets/img/profilephoto.png",
-        "firstName": "Linda",
-        "lastName": "Leinonen",
-        "email":"matti.virtanen@example.com",
-        "account":"matti.virtanen",
-        "created":"seconds"
-    }
-}
-
 function MainCtrl($scope, $state, $http) {
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
     $http.get('http://127.0.0.1:8080/ui/userInformation?select=gender,status,firstName,lastName,email,address1,address2,cities_id,regions_id,countries_id,languages_id,nationalities_id,img_url_avatar,created').
@@ -34,7 +23,6 @@ function MainCtrl($scope, $state, $http) {
             console.log(data)
         }).
         error(function(data, status, headers, config) {
-            //$scope.userInfo = fakeUserInfo["214421"]
         });
 };
 
@@ -46,7 +34,6 @@ function ProfileCtrl($scope, $http) {
             console.log(data)
         }).
         error(function(data, status, headers, config) {
-            //$scope.userInfo = fakeUserInfo["214421"]
         });
     $http.get('http://127.0.0.1:8080/ui/myServices/numberOfServices?status=All').
         success(function(data, status, headers, config) {
@@ -54,7 +41,6 @@ function ProfileCtrl($scope, $http) {
             console.log(data)
         }).
         error(function(data, status, headers, config) {
-            //$scope.userInfo = fakeUserInfo["214421"]
         });
 }
 
@@ -68,60 +54,6 @@ function random(max) {
 
 var logoArray = ['amica', 'fitbit', 'kesko', 'mehilainen', 'myfitnesspal', 'sgroup']
 var booleanArray = [true, false, null]
-
-function fakeAPI_MyServices () {
-
-    var fakeData = {}
-
-    for(var i = 0; i < random(250); i++) {
-        fakeData[HolderIpsum.words(1, true)] = (function () {
-            var t = {}
-            t.categories = [HolderIpsum.words(1, true), HolderIpsum.words(1, true), HolderIpsum.words(1, true)]
-            t.name = HolderIpsum.words(1, true)
-            t.img_url_logo = 'assets/img/' + logoArray[randomR(0,5)] + 'logo.svg'
-            t.connections = {}
-            t.connections.ReceivingData = {}
-            t.connections.DataShared = {}
-            return t
-        })();
-    }
-
-    var keys = Object.keys(fakeData)
-    var l = keys.length
-
-    for (var k in fakeData) {
-        var obj = fakeData[k];
-        for (var s in obj) {
-            o = obj[s]
-            o.ReceivingData = (function () {
-                t = {}
-                for (var i = random(l); i < random(l); i++) {
-                    t[keys[i]] = {}
-                    t[keys[i]].serviceID = randomR(1000, 9999)
-                    t[keys[i]].img_url_logo = 'assets/img/' + logoArray[randomR(0,5)] + 'logo.svg'
-                    t[keys[i]].description = {}
-                    t[keys[i]].description.short = HolderIpsum.words(30, false)
-                    t[keys[i]].consentActive = booleanArray[randomR(0,2)]
-                }
-                return t
-            })();
-            o.DataShared = (function () {
-                t = {}
-                for (var i = random(l); i < random(l); i++) {
-                    t[keys[i]] = {}
-                    t[keys[i]].serviceID = randomR(1000, 9999)
-                    t[keys[i]].img_url_logo = 'assets/img/' + logoArray[randomR(0,5)] + 'logo.svg'
-                    t[keys[i]].description = {}
-                    t[keys[i]].description.short = HolderIpsum.words(30, false)
-                    t[keys[i]].consentActive = booleanArray[randomR(0,2)]
-                }
-                return t
-            })();
-        }
-    }
-    return fakeData
-
-}
 
 function MyServiceCtrl ($scope, $http) {
     this.title = 'My Service';
@@ -159,88 +91,16 @@ function MyServiceCtrl ($scope, $http) {
         })
         .error(function(data) {
             console.log(data);
-            //$scope.data = fakeAPI_MyServices()
         });
-}
-
-function fakeAPI_Service (serviceID) {
-    var fakeData = {}
-    var contractStatusArray = ['Active', 'Paused', 'Withdrawed']
-    var roleArray = ['source', 'sink', 'both']
-    var consentStatusArray = ['Active', 'Paused', 'Withdrawed']
-
-    fakeData[serviceID] = (function () {
-        var t = {}
-        t.name = HolderIpsum.words(1, true)
-        t.img_url_logo = 'assets/img/' + logoArray[randomR(0,5)] + 'logo.svg'
-        t.img_url_banner = 'assets/img/myfitnesspalphoto.png'
-        t.img_url_overview = 'assets/img/myfitnesspalphoto.png'
-        t.description = {}
-        t.description['short'] = HolderIpsum.words(15, false)
-        t.description['longer'] = HolderIpsum.words(80, false)
-        t.categories = [
-            HolderIpsum.words(1, true),
-            HolderIpsum.words(1, true),
-            HolderIpsum.words(1, true)
-        ]
-        t.labels = [
-            'news',
-            'popular'
-        ]
-        t.commonConsent = [
-            "assets/img/cc/c1.svg",
-            "assets/img/cc/c2.svg",
-            "assets/img/cc/c3.svg",
-            "assets/img/cc/c4.svg"
-        ]
-
-        t.potentialServicesWithoutContract = {}
-        for(var i = 0; i < random(1,10); i++) {
-            t.potentialServicesWithoutContract[random(1000,9999)] = (function () {
-                var s = {}
-                s.role = roleArray[randomR(0,3)]
-                return s
-            })();
-        }
-
-        t.potentialServicesWithContract = {}
-        for(var i = 0; i < random(5,20); i++) {
-            t.potentialServicesWithContract[random(1000,9999)] = (function () {
-                var s = {}
-                s.contractID = random(1000,9999)
-                s.contractStatus = contractStatusArray[randomR(0,2)]
-                s.role = roleArray[randomR(0,3)]
-                return s
-            })();
-        }
-
-        t.servicesWithConsent = {}
-        for(var j = 0; j < randomR(1,10); j++) {
-            t.servicesWithConsent[random(1000,9999)] = (function () {
-                var s = {}
-                var randomTime = new Date(randomR(999,999999999999))
-                var duration = Math.abs(randomTime.getTime() - Date.now())
-                s.consentID = random(1000,9999)
-                s.consentStatus = consentStatusArray[randomR(0,2)]
-                s.duration = new Date(duration)
-                s.role = roleArray[randomR(0,3)]
-                return s
-            })();
-        }
-
-        return t
-    })();
-    return fakeData
 }
 
 function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService, myService, $http) {
 
-    //FIX_FOR_DEMO: show selected categories and licenses
+    //Show selected categories and licenses
     var view_consent_by_id = null
     if(relatedService['consentID'] !== undefined){
         view_consent_by_id = relatedService['consentID']
     }
-    //End_FIX
 
     $scope.myService = myService
     $scope.relatedService = relatedService
@@ -261,12 +121,10 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             $scope.categories = reorganize(data.source.categories)
             $scope.consent = data
 
-            //FIX_FOR_DEMO: show selected categories and licenses of Consent
+            // Show selected categories and licenses of Consent
             if(view_consent_by_id !== null){
                 show_selected_cats_lics()
             }
-            //End_FIX
-
         })
     } else if (relatedService.role === 'Source') {
         var sourcemsg = JSON.stringify({
@@ -279,19 +137,17 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             console.log(data)
             $scope.licenses = reorganize(data.sink.licenses)
             $scope.categories = reorganize(data.source.categories)
-            //TODO_FOR_DEMO: Names of the services should be included in the texts
-            //!!!FIXED!!!
+
             $scope.consent = data
 
-            //FIX_FOR_DEMO: show selected categories and licenses of Consent
+            // Show selected categories and licenses of Consent
             if(view_consent_by_id !== null){
                 show_selected_cats_lics()
             }
-            //End_FIX
         })
     }
 
-    //FIX_FOR_DEMO: show selected categories and licenses of Consent
+    // show selected categories and licenses of Consent
     function show_selected_cats_lics () {
         lics = $scope.consent.sink.selected_licenses
         cats = $scope.consent.source.selected_categories
@@ -302,7 +158,6 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
             $scope.licenses[lics[j][0]]['checked'] = true
         }
     }
-    //End_FIX
 
     function remove_duplicates(arr) {
         var obj = {};
@@ -380,42 +235,16 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
     };
     $scope.removeConsent = function () {
 
-        //FIX_FOR_DEMO: withdraw consent
+        // Withdraw consent
         $http.get("http://127.0.0.1:8080/ui/disable_consent/" + view_consent_by_id).success(function(data, status) {
             console.log(data)
             $modalInstance.close('removeConsent');
         }).error(function(err){
             console.log(err);
         })
-        //END_FIX
-
-
-
-		// For faking the Consent Withdraw in UI-code
-        // delete $scope.relatedService['consentID']
-        // delete $scope.relatedService['consentStatus']
-        // delete $scope.relatedService['duration']
-
-        // var sinkIndex = $scope.$parent.datasinkWithConsent.indexOf($scope.relatedService)
-        // var sourceIndex = $scope.$parent.datasourceWithConsent.indexOf($scope.relatedService)
-        // if (sinkIndex >= 0) {
-        //     $scope.$parent.datasinkWithConsent.splice(sinkIndex,1)
-        //     $scope.$parent.potentialDataSinkWithContract.push($scope.relatedService)
-        // }
-        // if (sourceIndex >= 0) {
-        //     $scope.$parent.datasourceWithConsent.splice(sourceIndex,1)
-        //     $scope.$parent.potentialDataSourceWithContract.push($scope.relatedService)
-        // }
-
-        //FIX_FOR_DEMO: refresh
-        // $route.reload();
-        // $state.reload();
-        // $state.go($state.current, {}, {reload: true});
     };
     $scope.giveConsent = function () {
         console.log($scope.categories)
-        //FIX_FOR_DEMO: change to get categories that user selected.
-        // var cats = Object.keys($scope.categories)
         //get the selected categories by check the status of Category
         var cats = []
         for (i in $scope.categories){
@@ -496,20 +325,6 @@ function ModalConsentDetailsCtrl ($scope, $state, $modalInstance, relatedService
                 console.log(err);
             })
         }
-
-
-        //below is for faking the process in UI, should be removed when back-end endpoints of checking consent is ready
-        // var sinkIndex = $scope.$parent.potentialDataSinkWithContract.indexOf($scope.relatedService)
-        // var sourceIndex = $scope.$parent.potentialDataSourceWithContract.indexOf($scope.relatedService)
-        // if (sinkIndex >= 0) {
-        //     $scope.$parent.potentialDataSinkWithContract.splice(sinkIndex,1)
-        //     $scope.$parent.datasinkWithConsent.push($scope.relatedService)
-        // }
-        // if (sourceIndex >= 0) {
-        //     $scope.$parent.potentialDataSourceWithContract.splice(sourceIndex,1)
-        //     $scope.$parent.datasourceWithConsent.push($scope.relatedService)
-        // }
-
     };
 }
 
@@ -529,9 +344,6 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
             getServicesWithConsentDetails($scope.data)
         }).
         error(function(data, status, headers, config) {
-            //$scope.data = fakeAPI_Service(serviceID)[serviceID]
-            //$state.current.data.pageTitle = "My Service's Details > " + $scope.data.name
-            //getServicesWithConsentDetails($scope.data)
         });
 
 
@@ -557,20 +369,9 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                         $scope.potentialDataSourceWithoutContract.push(data[id]);
                         $scope.noSourceServicesWithoutContract = false;
                     }
-
                 }).
                 error(function(data, status, headers, config) {
-                    //var fakeData = fakeAPI_Service(serviceID)[serviceID]
-                    //
-                    //if (obj.role === 'sink' || obj.role === 'both') {
-                    //    $scope.potentialDataSinkWithoutContract.push(fakeData)
-                    //}
-                    //if (obj.role === 'source' || obj.role === 'both') {
-                    //    $scope.potentialDataSourceWithoutContract.push(fakeData)
-                    //}
                 });
-
-
         });
 
         $scope.potentialDataSinkWithContract = [];
@@ -607,15 +408,6 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
 
                 }).
                 error(function(data, status, headers, config) {
-                    //var fakeData = fakeAPI_Service(serviceID)[serviceID]
-                    //fakeData['role'] = obj.role
-                    //if (obj.role === 'sink' || obj.role === 'both') {
-                    //    $scope.potentialDataSinkWithContract.push(fakeData)
-                    //}
-                    //if (obj.role === 'source' || obj.role === 'both') {
-                    //    $scope.potentialDataSourceWithContract.push(fakeData)
-                    //}
-                    //console.log($scope.potentialDataSourceWithContract)
                 });
         });
 
@@ -636,7 +428,6 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
 
                     d['consentStatus'] = (obj.consentStatus === 'active')
 
-                    //d['consentStatus'] = obj.consentStatus
                     d['duration'] = obj.duration
                     d['role'] = obj.role
                     if (obj.role === 'Sink' || obj.role === 'Both') {
@@ -644,28 +435,15 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                         $scope.noSinkServicesWithoutConsent = false;
                     }
                     if (obj.role === 'Source' || obj.role === 'Both') {
-                        //FIX_FOR_DEMO: FIX THE DOT-NOTATION. CHANGE TO THE SAME STYLE SHOWING IN CONSENT DETAIL MODAL
                         d['categories'] = reorganize(d['categories']);
                         $scope.datasourceWithConsent.push(d);
                         $scope.noSourceServicesWithoutConsent = false;
                     }
                 }).
                 error(function(data, status, headers, config) {
-                    //var fakeData = fakeAPI_Service(serviceID)[serviceID]
-                    //fakeData['consentID'] = obj.consentID
-                    //fakeData['consentStatus'] = obj.consentStatus
-                    //fakeData['duration'] = obj.duration
-                    //fakeData['role'] = obj.role
-                    //if (obj.role === 'sink' || obj.role === 'both') {
-                    //    $scope.datasinkWithConsent.push(fakeData)
-                    //}
-                    //if (obj.role === 'source' || obj.role === 'both') {
-                    //    $scope.datasourceWithConsent.push(fakeData)
-                    //}
                 });
         });
     }
-    //FIX_FOR_DEMO: FIX THE DOT-NOTATION. CHANGE TO THE SAME STYLE SHOWING IN CONSENT DETAIL MODAL
         function reorganize(data) {
             sorted = {}
             data.forEach(function(i) {
@@ -708,13 +486,9 @@ function MyServiceDetailCtrl ($scope, $http, $stateParams, $state, $modal) {
                     return $scope.data;
                 },
             },
-            //size: 'sm',
         });
         consentModalInstance.result.then(function () {
             //FOR_CLOSE
-            //FIX_FOR_DEMO: refresh
-            // $route.reload();
-            // $state.reload();
             $state.go($state.current, {}, {reload: true});
         }, function () {
             //FOR_DISMISS
@@ -739,7 +513,6 @@ function ModalAddServiceInstanceStepQCtrl ($scope, $modalInstance, $modal) {
                 }
             }
         });
-        //$modalInstance.dismiss('next');
     };
 }
 
@@ -763,32 +536,15 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
             $state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
         }).
         error(function(data, status, headers, config) {
-            //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
-            //makeListOfserviceCanAccess($scope.serviceDetails)
-            //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
         });
-    /*
-    $scope.next = function () {
-        var modalInstanceTwo = $modal.open({
-            templateUrl: 'views/addServiceStepTwoModal.html',
-            windowClass: "animated fadeIn addServiceModalPos",
-            controller: ModalAddServiceInstanceStepTwoCtrl,
-            scope: $scope,
-            resolve: {
-                data: function () {
-                    return $scope.data;
-                }
-            }
-        });
-        //$modalInstance.dismiss('next');
-    };
-    */
+
     $scope.show_login = function () {
         // show foreign_login_step_1
           $( "#foreign_login_step_1" ).show( "scale", "fast", function() {
             // Animation complete.
           });
     };
+
     $scope.perform_login = function (user) {
         // perform foreign_login_step_1
         $( "#spinner" ).show( "scale", "fast", function() {
@@ -809,8 +565,6 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                 $( "#sct_view" ).show( "scale", "fast", function() {
                     // Animation complete.
                 });
-                //$scope.serviceID = serviceID
-                //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
             }).
             error(function(data, status, headers, config) {
                 console.log("Status: " + status)
@@ -830,9 +584,6 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                         // Animation complete.
                     });
                 }
-                //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
-                //makeListOfserviceCanAccess($scope.serviceDetails)
-                //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
             });
     };
 
@@ -856,40 +607,19 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                 console.log("Config: " + angular.toJson(data, true))
                 console.log("Data: " + angular.toJson(data, true))
                 $scope.response_data = data
-                /*$( "#sct_view" ).show( "scale", "fast", function() {
-                    // Animation complete.
-                });*/
+
                 $( "#foreign_login_step_1" ).hide( "scale", "fast", function() {
                     // Animation complete.
-                    //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#sct_view" ).hide( "scale", "fast", function() {
                     // Animation complete.
-                    //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#addService_2" ).show( "scale", "fast", function() {
                     // Animation complete.
-                    //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
                 $( "#addService_1" ).hide( "scale", "fast", function() {
                     // Animation complete.
-                    //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
                 });
-                /*
-                var modalInstanceTwo = $modal.open({
-                    templateUrl: 'views/addServiceStepTwoModal.html',
-                    windowClass: "animated fadeIn addServiceModalPos",
-                    controller: ModalAddServiceInstanceStepTwoCtrl,
-                    scope: $scope,
-                    resolve: {
-                        serviceDetails: function () {
-                            return $scope.serviceDetails;
-                        }
-                    }
-                });
-                */
-                //$scope.serviceID = serviceID
-                //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
             }).
             error(function(data, status, headers, config) {
                 console.log("Status: " + status)
@@ -902,9 +632,6 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
                 $( "#sct_failed" ).show( "scale", "fast", function() {
                         // Animation complete.
                 });
-                //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
-                //makeListOfserviceCanAccess($scope.serviceDetails)
-                //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
             });
 
     };
@@ -912,34 +639,17 @@ function ModalAddServiceInstanceStepOneCtrl ($scope, $modalInstance, $modal, $ht
     $scope.discard_sct = function () {
         $( "#foreign_login_step_1" ).hide( "scale", "fast", function() {
             // Animation complete.
-            //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
         $( "#sct_view" ).hide( "scale", "fast", function() {
             // Animation complete.
-            //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
 
         $( "#addService_3" ).show( "scale", "fast", function() {
             // Animation complete.
-            //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
         $( "#addService_1" ).hide( "scale", "fast", function() {
             // Animation complete.
-            //$state.current.data.pageTitle = $scope.serviceDetails.name + "Login"
         });
-        /*
-        var modalInstanceThree = $modal.open({
-            templateUrl: 'views/addServiceStepThreeModal.html',
-            windowClass: "animated fadeIn addServiceModalPos",
-            controller: ModalAddServiceInstanceStepThreeCtrl,
-            scope: $scope,
-            resolve: {
-                serviceDetails: function () {
-                    return $scope.serviceDetails;
-                }
-            }
-        });
-        */
     }
 
     $scope.close_login = function () {
@@ -967,9 +677,6 @@ function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
             $state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
         }).
         error(function(data, status, headers, config) {
-            //$scope.serviceDetails = fakeAPI_Service(serviceID)[serviceID]
-            //makeListOfserviceCanAccess($scope.serviceDetails)
-            //$state.current.data.pageTitle = "Service's Details > " + $scope.serviceDetails.name
         });
 
     $scope.clickAddTo = function(){
@@ -1002,22 +709,16 @@ function ServiceDetailCtrl ($scope, $http, $stateParams, $modal, $state) {
                     var d = data[id]
                     d['serviceID'] = id
 
-                    //$scope.servicesCanAccess.push(d)
-                    //$scope.servicesCanAccess.push(data[id])
-
                     if (obj.role === 'Sink' || obj.role === 'Both') {
                         $scope.sinkServicesCanAccess.push(data[id]);
-                        //console.log("Length of sinkServicesCanAccess: " + $scope.sinkServicesCanAccess.length);
                         $scope.noSinkServices = false;
                     }
                     if (obj.role === 'Source' || obj.role === 'Both') {
                         $scope.sourceServicesCanAccess.push(data[id]);
-                        //console.log("Length of sourceServicesCanAccess: " + $scope.sourceServicesCanAccess.length);
                         $scope.noSourceServices = false;
                     }
                 }).
                 error(function(data, status, headers, config) {
-                    //$scope.servicesCanAccess.push(fakeAPI_Service(id)[id])
                 });
         });
     }
@@ -1030,86 +731,11 @@ function HomeCtrl ($scope, $http) {
             $scope.availableServices = data
         }
         ).error(function(data){
-            //$scope.availableServices = {
-            //    "212223":
-            //    {
-            //        "name": "s-group",
-            //        "img_url_overview": "assets/img/services/s-group_l.png",
-            //        "description": "Short description of the service written by the provider"
-            //    },
-            //    "123123":
-            //    {
-            //        "name": "myfitnesspal",
-            //        "img_url_overview": "assets/img/services/myfitnesspal_l.png",
-            //        "description": "Short description of the service written by the provider"
-            //    },
-            //    "413123":
-            //    {
-            //        "name": "if-insurance",
-            //        "img_url_overview": "assets/img/services/if-insurance_l.png",
-            //        "description": "Short description of the service written by the provider"
-            //    },
-            //}
+            $scope.availableServices = {}
         });
-
-    $scope.loadMore = function() {
-        var ref = ['s-group', 'myfitnesspal', 'if-insurance'][randomR(0,3)]
-        var id = random(100000,999999)
-        var imgUrl = "assets/img/services/" + ref + "_l.png"
-        for (var i = 0; i < 2; i++) {
-            $scope.availableServices[id] = {
-                "name": ref,
-                "img_url_overview": imgUrl,
-                "description": "Short description of the service written by the provider"
-            }
-        }
-    };
-
 }
 
 function DiscoveryCtrl ($scope, $http) {
-    var fakeServices = {
-        "212223":
-        {
-            "name": "s-group",
-            "img_url_overview": "assets/img/services/s-group_l.png",
-            "description": "Short description of the service written by the provider",
-            "categories":["Food", "Health"],
-            "labels":["popular"]
-        },
-        "123123":
-        {
-            "name": "myfitnesspal",
-            "img_url_overview": "assets/img/services/myfitnesspal_l.png",
-            "description": "Short description of the service written by the provider",
-            "categories":["Health", 'Fitness'],
-            "labels":["popular", 'new']
-        },
-        "413123":
-        {
-            "name": "if-insurance",
-            "img_url_overview": "assets/img/services/if-insurance_l.png",
-            "description": "Short description of the service written by the provider",
-            "categories":["Health"],
-            "labels":["popular"]
-        },
-        "613123":
-        {
-            "name": "polarflow",
-            "img_url_overview": "assets/img/services/polarflow_l.png",
-            "description": "Short description of the service written by the provider",
-            "categories":["Food", "Health", 'Fitness'],
-            "labels":['new']
-        },
-        "419123":
-        {
-            "name": "basis",
-            "img_url_overview": "assets/img/services/basis_l.png",
-            "description": "Short description of the service written by the provider",
-            "categories":["Food", "Health"],
-            "labels":['new']
-        },
-    }
 
     function compileAsGroup (services) {
 
@@ -1144,9 +770,6 @@ function DiscoveryCtrl ($scope, $http) {
             })
         });
 
-        // sortedServices['newServices'] = newServices
-        // sortedServices['popularServices'] = popularServices
-
         sortedServices['New Services'] = newServices
         sortedServices['Popular Services'] = popularServices
 
@@ -1165,8 +788,6 @@ function DiscoveryCtrl ($scope, $http) {
                 })
             })
         });
-
-
         return sortedServices
     }
     $http.defaults.headers.common.Authorization = "Basic " +_base64.encode('testuser' + ":" + 'Hello');
@@ -1176,10 +797,8 @@ function DiscoveryCtrl ($scope, $http) {
             console.log(data)
             console.log("sortedListofService")
             console.log($scope.sortedListofService);
-            //console.log(angular.toJson($scope.sortedListofService, true));
         }
         ).error(function(data){
-            //$scope.sortedListofService = compileAsGroup(fakeServices)
         });
 }
 
