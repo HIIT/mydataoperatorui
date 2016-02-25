@@ -52,7 +52,6 @@ function random(max) {
     return Math.floor(Math.random() * (max - 1)) + 1;
 }
 
-var logoArray = ['amica', 'fitbit', 'kesko', 'mehilainen', 'myfitnesspal', 'sgroup']
 var booleanArray = [true, false, null]
 
 function MyServiceCtrl ($scope, $http) {
