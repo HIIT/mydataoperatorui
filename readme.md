@@ -16,5 +16,5 @@ Please check Data Operator's [```Getting started```](https://github.com/dhrproje
 
 ## Copying and License
 
-This software product uses INSPINIA-template (http://webapplayers.com/inspinia_admin-v2.3/layouts.html | http://webapplayers.com/)  
+This software product uses [INSPINIA Admin Theme template v2.2](http://webapplayers.com/inspinia_admin-v2.2/)  
   All other code is licensed under MIT-license
