@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://hunghanchen@bitbucket.org/dhrpoc/dhr.git"
+    "url": "git+https://github.com/dhrproject/mydataoperatorui.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/dhrpoc/dhr#readme",
+  "homepage": "https://github.com/dhrproject/mydataoperatorui",
   "devDependencies": {
     "autoprefixer": "^5.2.0",
     "babel-core": "^5.8.22",
